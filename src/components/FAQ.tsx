@@ -9,53 +9,52 @@ import mascotSagaz from '@/assets/mascot-sagaz.png';
 const faqs = [
   {
     question: 'Quanto tempo leva para desenvolver um projeto?',
-    answer: 'O prazo varia de acordo com a complexidade do projeto. Um site institucional pode levar de 2 a 4 semanas, enquanto sistemas mais complexos podem levar de 2 a 6 meses. Na primeira conversa, faremos uma estimativa detalhada para você.',
+    answer: 'O prazo varia de acordo com a complexidade. Um site institucional pode levar de 2 a 4 semanas, enquanto sistemas mais complexos podem levar de 2 a 6 meses. Faremos uma estimativa detalhada na primeira conversa.',
   },
   {
-    question: 'Vocês oferecem suporte após a entrega do projeto?',
-    answer: 'Sim! Oferecemos planos de suporte e manutenção contínua para garantir que seu projeto funcione perfeitamente. Também estamos sempre disponíveis para evoluções e novas funcionalidades.',
+    question: 'Vocês oferecem suporte após a entrega?',
+    answer: 'Sim! Oferecemos planos de suporte e manutenção contínua. Também estamos sempre disponíveis para evoluções e novas funcionalidades.',
   },
   {
     question: 'Como funciona o processo de desenvolvimento?',
-    answer: 'Trabalhamos com metodologias ágeis. Primeiro, entendemos suas necessidades em uma reunião de briefing. Depois, criamos protótipos para validação. Com a aprovação, iniciamos o desenvolvimento com entregas incrementais e feedback constante.',
+    answer: 'Trabalhamos com metodologias ágeis. Primeiro entendemos suas necessidades, depois criamos protótipos para validação e iniciamos o desenvolvimento com entregas incrementais.',
   },
   {
     question: 'Vocês trabalham com empresas de qualquer tamanho?',
-    answer: 'Absolutamente! Atendemos desde startups e pequenos negócios até grandes empresas. Cada projeto é tratado com a mesma dedicação e profissionalismo, independente do tamanho.',
+    answer: 'Absolutamente! Atendemos desde startups até grandes empresas. Cada projeto é tratado com a mesma dedicação e profissionalismo.',
   },
   {
     question: 'Quais formas de pagamento vocês aceitam?',
-    answer: 'Aceitamos diversas formas de pagamento: PIX, transferência bancária, cartão de crédito e parcelamento. O modelo de pagamento é definido junto com o escopo do projeto.',
+    answer: 'Aceitamos PIX, transferência bancária, cartão de crédito e parcelamento. O modelo de pagamento é definido junto com o escopo do projeto.',
   },
 ];
 
 const FAQ = () => {
   return (
-    <section className="py-20 bg-background">
+    <section id="faq" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* FAQ content */}
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
+          {/* Content */}
           <div>
-            <div className="mb-8">
-              <p className="text-primary text-sm uppercase tracking-widest font-medium mb-4 flex items-center gap-2">
-                <span>▶</span> DÚVIDAS FREQUENTES
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-                Perguntas que você pode ter
-              </h2>
-            </div>
+            <p className="text-accent font-semibold text-sm uppercase tracking-wide mb-4">
+              FAQ
+            </p>
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-8">
+              Perguntas 
+              <span className="gradient-text"> frequentes</span>
+            </h2>
 
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-card border border-border rounded-lg px-6 data-[state=open]:border-primary/50 shadow-sm"
+                  className="bg-card border border-border rounded-2xl px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-lg transition-all"
                 >
-                  <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-6">
+                  <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-5 text-base font-medium">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-6">
+                  <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -64,13 +63,13 @@ const FAQ = () => {
           </div>
 
           {/* Mascot */}
-          <div className="hidden lg:flex justify-center items-center">
+          <div className="hidden lg:flex justify-center items-center sticky top-32">
             <div className="relative">
-              <div className="absolute inset-0 bg-secondary/50 rounded-full blur-3xl scale-75" />
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full blur-3xl scale-75" />
               <img 
                 src={mascotSagaz} 
                 alt="Sharkle Mascot" 
-                className="relative z-10 w-64 h-auto drop-shadow-xl"
+                className="relative z-10 w-56 h-auto drop-shadow-xl animate-float"
               />
             </div>
           </div>
