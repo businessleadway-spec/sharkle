@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import mascotSagaz from '@/assets/mascot-sagaz.png';
+import { HelpCircle } from 'lucide-react';
 
 const faqs = [
   {
@@ -31,15 +32,20 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="section-padding gradient-section">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
+    <section id="faq" className="section-padding relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Content */}
           <div>
-            <p className="text-accent font-semibold text-sm uppercase tracking-wide mb-4">
-              FAQ
-            </p>
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
+              <HelpCircle className="w-4 h-4 text-primary" />
+              <span className="text-sm font-semibold text-primary uppercase tracking-wider">FAQ</span>
+            </div>
+            
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-10">
               Perguntas 
               <span className="gradient-text"> frequentes</span>
             </h2>
@@ -49,9 +55,9 @@ const FAQ = () => {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-card border border-border rounded-2xl px-6 shadow-soft data-[state=open]:shadow-primary-lg data-[state=open]:border-primary/30 transition-all duration-300"
+                  className="bg-card border border-border/50 rounded-2xl px-6 overflow-hidden data-[state=open]:border-primary/30 data-[state=open]:shadow-soft transition-all duration-300"
                 >
-                  <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-5 text-base font-medium">
+                  <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-5 text-base font-semibold [&[data-state=open]]:text-primary">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
@@ -65,13 +71,14 @@ const FAQ = () => {
           {/* Mascot */}
           <div className="hidden lg:flex justify-center items-center sticky top-32">
             <div className="relative">
-              <div className="absolute inset-0 rounded-full blur-3xl scale-75 opacity-60"
-                style={{ background: 'radial-gradient(circle, hsl(189 60% 45% / 0.25) 0%, hsl(204 37% 36% / 0.15) 50%, transparent 70%)' }}
+              <div 
+                className="absolute inset-0 rounded-full blur-[80px] scale-125 opacity-40"
+                style={{ background: 'radial-gradient(circle, hsl(189 60% 45% / 0.3) 0%, hsl(204 37% 36% / 0.2) 50%, transparent 70%)' }}
               />
               <img 
                 src={mascotSagaz} 
                 alt="Sharkle Mascot" 
-                className="relative z-10 w-56 h-auto drop-shadow-xl animate-float"
+                className="relative z-10 w-64 h-auto drop-shadow-2xl animate-float"
               />
             </div>
           </div>
