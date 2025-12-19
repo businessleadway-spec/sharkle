@@ -65,7 +65,7 @@ const Services = () => {
               key={index}
               className="card-feature group cursor-pointer"
             >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+              <div className="icon-container icon-container-lg mb-6 group-hover:shadow-primary transition-shadow duration-300">
                 <service.icon className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-3">{service.title}</h3>

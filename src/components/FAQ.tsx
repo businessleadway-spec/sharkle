@@ -31,7 +31,7 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="section-padding bg-muted/30">
+    <section id="faq" className="section-padding gradient-section">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Content */}
@@ -49,7 +49,7 @@ const FAQ = () => {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-card border border-border rounded-2xl px-6 data-[state=open]:border-primary/30 data-[state=open]:shadow-lg transition-all"
+                  className="bg-card border border-border rounded-2xl px-6 shadow-soft data-[state=open]:shadow-primary-lg data-[state=open]:border-primary/30 transition-all duration-300"
                 >
                   <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-5 text-base font-medium">
                     {faq.question}
@@ -65,7 +65,9 @@ const FAQ = () => {
           {/* Mascot */}
           <div className="hidden lg:flex justify-center items-center sticky top-32">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-full blur-3xl scale-75" />
+              <div className="absolute inset-0 rounded-full blur-3xl scale-75 opacity-60"
+                style={{ background: 'radial-gradient(circle, hsl(189 60% 45% / 0.25) 0%, hsl(204 37% 36% / 0.15) 50%, transparent 70%)' }}
+              />
               <img 
                 src={mascotSagaz} 
                 alt="Sharkle Mascot" 

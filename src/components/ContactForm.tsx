@@ -62,7 +62,7 @@ const ContactForm = () => {
             {/* Contact info */}
             <div className="space-y-6 mb-10">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <div className="icon-container icon-container-md shadow-primary">
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -71,7 +71,7 @@ const ContactForm = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <div className="icon-container icon-container-md shadow-primary">
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -80,7 +80,7 @@ const ContactForm = () => {
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <div className="icon-container icon-container-md shadow-primary">
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
@@ -103,7 +103,7 @@ const ContactForm = () => {
           </div>
 
           {/* Right side - Form */}
-          <div className="bg-card p-8 lg:p-10 rounded-3xl shadow-xl border border-border">
+          <div className="bg-card p-8 lg:p-10 rounded-3xl border border-border shadow-soft-lg">
             <h3 className="text-2xl font-bold text-foreground mb-2">Envie sua mensagem</h3>
             <p className="text-muted-foreground text-sm mb-8">
               Responderemos o mais rápido possível.
@@ -119,7 +119,7 @@ const ContactForm = () => {
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
                   placeholder="Seu nome"
-                  className="bg-background border-border h-12 rounded-xl"
+                  className="bg-background border-border h-12 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                 />
               </div>
 
@@ -133,7 +133,7 @@ const ContactForm = () => {
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                   placeholder="seu@email.com"
-                  className="bg-background border-border h-12 rounded-xl"
+                  className="bg-background border-border h-12 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                 />
               </div>
 
@@ -147,7 +147,7 @@ const ContactForm = () => {
                   required
                   placeholder="Como podemos ajudar?"
                   rows={4}
-                  className="bg-background border-border resize-none rounded-xl"
+                  className="bg-background border-border resize-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                 />
               </div>
 
