@@ -12,7 +12,7 @@ const About = () => {
   return (
     <section id="sobre" className="section-padding gradient-section">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Image */}
           <div className="flex justify-center order-2 lg:order-1">
             <div className="relative">

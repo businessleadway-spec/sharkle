@@ -44,7 +44,7 @@ const ContactForm = () => {
   return (
     <section id="contato" className="section-padding bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
           {/* Left side - Info */}
           <div>
             <p className="text-accent font-semibold text-sm uppercase tracking-wide mb-4">
