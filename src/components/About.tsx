@@ -10,13 +10,15 @@ const features = [
 
 const About = () => {
   return (
-    <section id="sobre" className="section-padding bg-muted/30">
+    <section id="sobre" className="section-padding gradient-section">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image */}
           <div className="flex justify-center order-2 lg:order-1">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full blur-3xl scale-75" />
+              <div className="absolute inset-0 rounded-full blur-3xl scale-75 opacity-60"
+                style={{ background: 'radial-gradient(circle, hsl(204 37% 36% / 0.25) 0%, hsl(189 60% 45% / 0.15) 50%, transparent 70%)' }}
+              />
               <img 
                 src={mascotHandshake} 
                 alt="Sharkle Partnership" 
@@ -44,8 +46,8 @@ const About = () => {
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-accent" />
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 gradient-primary">
+                    <Check className="w-3 h-3 text-white" />
                   </div>
                   <span className="text-foreground font-medium">{feature}</span>
                 </div>
@@ -54,17 +56,17 @@ const About = () => {
 
             {/* Stats */}
             <div className="flex gap-8 pt-8 border-t border-border">
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-primary">50+</p>
-                <p className="text-sm text-muted-foreground">Projetos</p>
+              <div className="stat-card flex-1">
+                <p className="text-3xl lg:text-4xl font-bold gradient-text">50+</p>
+                <p className="text-sm text-muted-foreground mt-1">Projetos</p>
               </div>
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-primary">100%</p>
-                <p className="text-sm text-muted-foreground">Dedicação</p>
+              <div className="stat-card flex-1">
+                <p className="text-3xl lg:text-4xl font-bold gradient-text">100%</p>
+                <p className="text-sm text-muted-foreground mt-1">Dedicação</p>
               </div>
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-primary">∞</p>
-                <p className="text-sm text-muted-foreground">Ideias</p>
+              <div className="stat-card flex-1">
+                <p className="text-3xl lg:text-4xl font-bold gradient-text">∞</p>
+                <p className="text-sm text-muted-foreground mt-1">Ideias</p>
               </div>
             </div>
           </div>

@@ -3,11 +3,15 @@ import mascotJoia from '@/assets/mascot-joia.png';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 lg:pt-0 overflow-hidden bg-background">
-      {/* Background gradient */}
+    <section className="relative min-h-screen flex items-center pt-20 lg:pt-0 overflow-hidden gradient-hero">
+      {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-primary/10 via-accent/5 to-transparent rounded-full blur-3xl translate-x-1/3 -translate-y-1/3" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-accent/10 via-primary/5 to-transparent rounded-full blur-3xl -translate-x-1/3 translate-y-1/3" />
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"
+          style={{ background: 'radial-gradient(circle, hsl(204 37% 36% / 0.12) 0%, hsl(189 60% 45% / 0.08) 50%, transparent 70%)' }} 
+        />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full blur-3xl -translate-x-1/3 translate-y-1/3"
+          style={{ background: 'radial-gradient(circle, hsl(189 60% 45% / 0.1) 0%, hsl(204 37% 36% / 0.05) 50%, transparent 70%)' }}
+        />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -44,11 +48,15 @@ const Hero = () => {
             {/* Feature badges */}
             <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-accent" />
+                <div className="icon-container icon-container-sm">
+                  <Zap className="w-4 h-4 text-accent" />
+                </div>
                 <span>Entregas ágeis</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-accent" />
+                <div className="icon-container icon-container-sm">
+                  <Shield className="w-4 h-4 text-accent" />
+                </div>
                 <span>Tecnologia de ponta</span>
               </div>
             </div>
@@ -58,13 +66,16 @@ const Hero = () => {
           <div className="hidden lg:flex justify-center items-center relative">
             {/* Floating cards */}
             <div className="relative w-full max-w-lg">
-              {/* Main mascot */}
+              {/* Main mascot with glow */}
               <div className="relative z-10 flex justify-center">
-                <div className="glow-primary rounded-full">
+                <div className="relative">
+                  <div className="absolute inset-0 rounded-full blur-3xl opacity-60"
+                    style={{ background: 'radial-gradient(circle, hsl(204 37% 36% / 0.3) 0%, transparent 70%)' }}
+                  />
                   <img 
                     src={mascotJoia} 
                     alt="Sharkle Mascot" 
-                    className="w-72 h-auto animate-float drop-shadow-2xl"
+                    className="relative z-10 w-72 h-auto animate-float drop-shadow-2xl"
                   />
                 </div>
               </div>
@@ -72,7 +83,7 @@ const Hero = () => {
               {/* Floating card 1 */}
               <div className="float-card absolute -left-8 top-1/4 animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <div className="icon-container icon-container-sm">
                     <span className="text-lg">🚀</span>
                   </div>
                   <div>
@@ -85,7 +96,7 @@ const Hero = () => {
               {/* Floating card 2 */}
               <div className="float-card absolute -right-4 bottom-1/4 animate-fade-in" style={{ animationDelay: '0.5s' }}>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+                  <div className="icon-container icon-container-sm">
                     <span className="text-lg">⭐</span>
                   </div>
                   <div>
