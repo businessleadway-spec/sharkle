@@ -45,7 +45,7 @@ const Services = () => {
     <section id="servicos" className="section-padding bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10">
           <p className="text-accent font-semibold text-sm uppercase tracking-wide mb-4">
             Nossos Serviços
           </p>

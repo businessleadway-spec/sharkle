@@ -33,7 +33,7 @@ const FAQ = () => {
   return (
     <section id="faq" className="section-padding gradient-section">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
           {/* Content */}
           <div>
             <p className="text-accent font-semibold text-sm uppercase tracking-wide mb-4">

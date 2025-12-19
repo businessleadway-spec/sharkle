@@ -168,7 +168,7 @@
 
   /* Section styles */
   .section-padding {
-    @apply py-24 lg:py-32;
+    @apply py-16 lg:py-20;
   }
 
   /* Gradient text using brand colors */
