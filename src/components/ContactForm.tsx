@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
+import mascotImpressed from '@/assets/mascot-impressionado.png';
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -57,33 +58,48 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contato" className="py-20 bg-background">
+    <section id="contato" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image side */}
           <div className="hidden lg:block">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl" />
-              <div className="aspect-square bg-card rounded-2xl flex items-center justify-center border border-border">
-                <div className="text-center p-8">
-                  <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="text-6xl">🛡️</span>
+              <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl scale-75" />
+              <div className="relative z-10 text-center">
+                <img 
+                  src={mascotImpressed} 
+                  alt="Sharkle Mascot" 
+                  className="w-64 h-auto mx-auto drop-shadow-xl mb-6"
+                />
+                <h3 className="text-2xl font-bold text-foreground mb-2">
+                  Vamos conversar?
+                </h3>
+                <p className="text-muted-foreground mb-6">
+                  Estamos prontos para ouvir suas ideias e transformá-las em realidade.
+                </p>
+                <div className="space-y-3 text-left max-w-xs mx-auto">
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <span className="text-primary">📱</span>
+                    <span>(16) 99355-5072</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    Cybersecurity Analyst
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Protegendo sua empresa 24/7
-                  </p>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <span className="text-primary">📱</span>
+                    <span>(16) 99233-4868</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <span className="text-primary">📧</span>
+                    <span>sharklemkt@gmail.com</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Form side */}
-          <div>
+          <div className="bg-card p-8 rounded-xl shadow-lg border border-border">
             <div className="mb-8">
-              <p className="text-muted-foreground text-sm mb-2">
+              <h3 className="text-2xl font-bold text-foreground mb-2">Envie sua mensagem</h3>
+              <p className="text-muted-foreground text-sm">
                 Campos marcados com * são requeridos
               </p>
             </div>
@@ -99,7 +115,7 @@ const ContactForm = () => {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     maxLength={40}
                     required
-                    className="bg-card border-border"
+                    className="bg-background border-border"
                   />
                   <p className="text-xs text-muted-foreground mt-1">
                     {40 - formData.name.length} de 40 caractere(s) restantes
@@ -113,7 +129,7 @@ const ContactForm = () => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     required
-                    className="bg-card border-border"
+                    className="bg-background border-border"
                   />
                 </div>
               </div>
@@ -128,18 +144,17 @@ const ContactForm = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    className="bg-card border-border"
+                    className="bg-background border-border"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Empresa *
+                    Empresa
                   </label>
                   <Input
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    required
-                    className="bg-card border-border"
+                    className="bg-background border-border"
                   />
                 </div>
               </div>
@@ -152,7 +167,7 @@ const ContactForm = () => {
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   required
-                  className="bg-card border-border"
+                  className="bg-background border-border"
                 />
               </div>
 
@@ -164,7 +179,7 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={4}
-                  className="bg-card border-border resize-none"
+                  className="bg-background border-border resize-none"
                 />
               </div>
 
@@ -173,13 +188,14 @@ const ContactForm = () => {
                   id="privacy"
                   checked={formData.agreed}
                   onCheckedChange={(checked) => setFormData({ ...formData, agreed: checked as boolean })}
+                  className="mt-1"
                 />
                 <label htmlFor="privacy" className="text-sm text-muted-foreground leading-relaxed">
                   Estou de acordo com a{' '}
                   <a href="#" className="text-primary hover:underline">
                     Política de Privacidade
                   </a>{' '}
-                  e autorizo a coleta, recepção, registro, uso, processamento, armazenamento de meus dados pessoais coletados e inclusão de banco de dados com a finalidade para desenvolvimento de proposta comercial. *
+                  e autorizo o contato. *
                 </label>
               </div>
 
@@ -191,11 +207,11 @@ const ContactForm = () => {
                   value={formData.antiSpam}
                   onChange={(e) => setFormData({ ...formData, antiSpam: e.target.value })}
                   required
-                  className="bg-card border-border max-w-32"
+                  className="bg-background border-border max-w-32"
                 />
               </div>
 
-              <Button type="submit" className="btn-primary w-full md:w-auto">
+              <Button type="submit" className="btn-primary w-full">
                 Enviar Mensagem
               </Button>
             </form>

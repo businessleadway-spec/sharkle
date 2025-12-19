@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -50,15 +50,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        green: {
-          primary: "hsl(var(--green-primary))",
-          light: "hsl(var(--green-light))",
-          dark: "hsl(var(--green-dark))",
-        },
-        dark: {
-          bg: "hsl(var(--dark-bg))",
-          card: "hsl(var(--dark-card))",
-          surface: "hsl(var(--dark-surface))",
+        sharkle: {
+          primary: "hsl(var(--sharkle-primary))",
+          secondary: "hsl(var(--sharkle-secondary))",
+          cream: "hsl(var(--sharkle-cream))",
+          graphite: "hsl(var(--sharkle-graphite))",
         },
       },
       borderRadius: {
@@ -91,6 +87,10 @@ export default {
           from: { opacity: "0", transform: "translateX(30px)" },
           to: { opacity: "1", transform: "translateX(0)" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -99,6 +99,7 @@ export default {
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
         "slide-in-left": "slide-in-left 0.6s ease-out forwards",
         "slide-in-right": "slide-in-right 0.6s ease-out forwards",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },
