@@ -4,6 +4,9 @@ import logo from '@/assets/logo.png';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = [{
+    name: 'Home',
+    href: '#'
+  }, {
     name: 'Sobre',
     href: '#sobre'
   }, {
