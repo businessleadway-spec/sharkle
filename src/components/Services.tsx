@@ -1,97 +1,98 @@
 import { 
-  Shield, 
-  Search, 
-  Monitor, 
-  Headphones, 
-  HardDrive, 
-  Network,
-  Lock,
+  Code, 
+  Smartphone, 
+  Globe, 
+  Megaphone, 
+  BarChart3, 
+  Palette,
+  Server,
   Zap,
-  Bug,
   Users,
-  Eye,
-  FileWarning
+  Target,
+  Lightbulb,
+  Rocket
 } from 'lucide-react';
 
 const services = [
   {
-    icon: Shield,
-    title: 'Next-Gen Firewall e Antimalware (XDR)',
-    description: 'Infraestrutura segura de rede com a Próxima Geração de Proteção de Ameaças em Tempo Real.',
+    icon: Code,
+    title: 'Desenvolvimento Web',
+    description: 'Criamos sites, landing pages e aplicações web responsivas e modernas que convertem visitantes em clientes.',
   },
   {
-    icon: Search,
-    title: 'Análise de Riscos, Vulnerabilidades e Pentest',
-    description: 'Identificamos as falhas em processos, aplicações e dispositivos e desenvolvemos o plano de ação para reduzir o risco.',
+    icon: Smartphone,
+    title: 'Aplicativos Mobile',
+    description: 'Desenvolvemos apps nativos e híbridos para iOS e Android com foco em usabilidade e performance.',
   },
   {
-    icon: Monitor,
-    title: 'SOC (Centro de Operações de Segurança)',
-    description: 'Nossa abordagem proativa de gerenciamento e a experiência de nosso time (Blue/Red/Purple Team) ajuda a prevenir problemas antes que eles cresçam.',
+    icon: Globe,
+    title: 'Sistemas Personalizados',
+    description: 'Soluções sob medida para automatizar processos, integrar sistemas e otimizar a gestão do seu negócio.',
   },
   {
-    icon: Headphones,
-    title: 'Atendimento Remoto ou Presencial',
-    description: 'Nosso time de especialistas está disponível para prover suporte onde você estiver.',
+    icon: Megaphone,
+    title: 'Marketing Digital',
+    description: 'Estratégias completas de marketing: gestão de redes sociais, tráfego pago, SEO e conteúdo.',
   },
   {
-    icon: HardDrive,
-    title: 'Backup & Recuperação de Desastres',
-    description: 'Desenvolvemos estratégias de Cópia, Replicação e Contingência para elevar a continuidade dos negócios de sua empresa.',
+    icon: BarChart3,
+    title: 'Análise de Dados',
+    description: 'Transformamos dados em insights acionáveis para tomadas de decisão mais inteligentes.',
   },
   {
-    icon: Network,
-    title: 'Infraestrutura de Rede',
-    description: 'Trabalhamos duro para projetar uma infraestrutura de rede que atenda às necessidades do seu negócio.',
+    icon: Palette,
+    title: 'Design & UX/UI',
+    description: 'Interfaces bonitas e funcionais que encantam usuários e fortalecem sua marca.',
   },
 ];
 
 const additionalServices = [
   {
-    icon: Lock,
-    title: 'Políticas de Controles de Acessos',
-    description: 'Criptografia e Monitoramento para detectar e impedir ameaças avançadas.',
+    icon: Server,
+    title: 'Infraestrutura Cloud',
+    description: 'Hospedagem, servidores e arquitetura escalável na nuvem.',
   },
   {
     icon: Zap,
-    title: 'Velocidade e eficiência',
-    description: 'Detecção e resposta em endpoints, identidades, redes, aplicativos, nuvens e dispositivos móveis.',
-  },
-  {
-    icon: Bug,
-    title: 'Detecção e Correção de Vulnerabilidades',
-    description: 'Antes que sejam exploradas pelos atores de ameaças.',
+    title: 'Automação de Processos',
+    description: 'Automatize tarefas repetitivas e ganhe eficiência operacional.',
   },
   {
     icon: Users,
-    title: 'Firewall Humano',
-    description: 'Construímos um firewall humano através de treinamentos contínuos, testes de phishing e campanhas de conscientização.',
+    title: 'Consultoria Tecnológica',
+    description: 'Orientamos sua empresa na jornada de transformação digital.',
   },
   {
-    icon: Eye,
-    title: 'Monitoramento de Dados Sensíveis',
-    description: 'Detectamos e monitoramos dados confidenciais e de propriedade intelectual.',
+    icon: Target,
+    title: 'Campanhas de Performance',
+    description: 'Google Ads, Meta Ads e estratégias focadas em ROI.',
   },
   {
-    icon: FileWarning,
-    title: 'Proteção contra Vazamentos',
-    description: 'Interrompemos vazamentos e protegemos as empresas contra ameaças internas e externas.',
+    icon: Lightbulb,
+    title: 'Branding & Identidade',
+    description: 'Construímos marcas memoráveis e posicionamento estratégico.',
+  },
+  {
+    icon: Rocket,
+    title: 'Growth Hacking',
+    description: 'Estratégias criativas e ágeis para acelerar seu crescimento.',
   },
 ];
 
 const Services = () => {
   return (
-    <section id="servicos" className="py-20 bg-secondary/30">
+    <section id="servicos" className="py-20 bg-primary">
       <div className="container mx-auto px-4">
-        {/* Experience badge */}
+        {/* Section header */}
         <div className="text-center mb-16">
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Estamos desde <strong className="text-primary">2009</strong> atendendo instituições de todos os tamanhos, sendo elas privadas ou públicas.
+          <p className="text-secondary text-sm uppercase tracking-widest font-medium mb-4">
+            ▶ NOSSOS SERVIÇOS
           </p>
-          <p className="text-muted-foreground mt-4 max-w-4xl mx-auto">
-            Nossa experiência em frameworks de Governança, Segurança e Privacidade de dados{' '}
-            <strong className="text-foreground">(ISO 27001/27002, NIST, LGPD, GDPR, ITIL, COBIT, etc.)</strong>{' '}
-            reforça a prevenção e recuperação contra violações, fraudes, intrusões, sequestros e demais ataques críticos.
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-sharkle-cream leading-tight mb-6">
+            Soluções completas para seu negócio
+          </h2>
+          <p className="text-sharkle-cream/70 max-w-3xl mx-auto">
+            Da ideia à execução, oferecemos um ecossistema completo de serviços para impulsionar sua presença digital e acelerar seus resultados.
           </p>
         </div>
 
@@ -100,14 +101,14 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="service-card group"
+              className="bg-sharkle-cream/10 backdrop-blur-sm p-6 rounded-lg border border-secondary/30 hover:border-secondary/60 transition-all duration-300 group"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <service.icon className="w-7 h-7 text-primary" />
+              <div className="w-14 h-14 rounded-lg bg-secondary/20 flex items-center justify-center mb-4 group-hover:bg-secondary/30 transition-colors">
+                <service.icon className="w-7 h-7 text-secondary" />
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{service.title}</h3>
-              <p className="text-muted-foreground text-sm">{service.description}</p>
+              <h3 className="text-lg font-semibold text-sharkle-cream mb-2">{service.title}</h3>
+              <p className="text-sharkle-cream/70 text-sm">{service.description}</p>
             </div>
           ))}
         </div>
@@ -119,12 +120,12 @@ const Services = () => {
               key={index}
               className="flex items-start gap-4 p-4"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <service.icon className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                <service.icon className="w-5 h-5 text-secondary" />
               </div>
               <div>
-                <h4 className="font-medium text-foreground mb-1">{service.title}</h4>
-                <p className="text-muted-foreground text-sm">{service.description}</p>
+                <h4 className="font-medium text-sharkle-cream mb-1">{service.title}</h4>
+                <p className="text-sharkle-cream/60 text-sm">{service.description}</p>
               </div>
             </div>
           ))}
