@@ -13,27 +13,27 @@ const logos = [
 
 const TrustedBy = () => {
   return (
-    <section className="py-12 bg-muted/30 border-y border-border/50">
-      <div className="container mx-auto px-4">
-        <p className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-wide font-medium">
+    <section className="py-16 bg-muted/30 border-y border-border/50 overflow-hidden">
+      <div className="container mx-auto px-4 mb-8">
+        <p className="text-center text-sm text-muted-foreground uppercase tracking-widest font-medium">
           Tecnologias que dominamos
         </p>
-        
-        <InfiniteSlider gap={48} duration={30} durationOnHover={60} className="py-4">
-          {logos.map((logo, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center w-20 h-20 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
-            >
-              <img
-                src={logo.src}
-                alt={logo.name}
-                className="h-12 w-auto object-contain"
-              />
-            </div>
-          ))}
-        </InfiniteSlider>
       </div>
+      
+      <InfiniteSlider gap={64} duration={30} pauseOnHover className="py-4">
+        {logos.map((logo, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-center w-24 h-24 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-500"
+          >
+            <img
+              src={logo.src}
+              alt={logo.name}
+              className="h-14 w-auto object-contain"
+            />
+          </div>
+        ))}
+      </InfiniteSlider>
     </section>
   );
 };
