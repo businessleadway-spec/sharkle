@@ -1,4 +1,5 @@
 import { ArrowRight, Zap, Shield, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 import mascotJoia from '@/assets/mascot-joia.png';
 
 const Hero = () => {
@@ -35,32 +36,49 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text content */}
-          <div className="max-w-xl">
+          <motion.div 
+            className="max-w-xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          >
             {/* Badge */}
-            <div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-8 animate-fade-in"
-              style={{ animationDelay: '0.1s' }}
+            <motion.div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-8"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">Soluções digitais que transformam</span>
-            </div>
+            </motion.div>
 
-            <h1 
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.05] tracking-tight mb-6 animate-fade-in-up"
-              style={{ animationDelay: '0.2s' }}
+            <motion.h1 
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.05] tracking-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               Crie fácil.
               <br />
               <span className="relative inline-block">
                 <span className="gradient-text">Cresça rápido.</span>
-                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
-                  <path 
+                <motion.svg 
+                  className="absolute -bottom-2 left-0 w-full" 
+                  viewBox="0 0 300 12" 
+                  fill="none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.8 }}
+                >
+                  <motion.path 
                     d="M2 10C50 4 100 2 150 6C200 10 250 8 298 4" 
                     stroke="url(#gradient)" 
                     strokeWidth="3" 
                     strokeLinecap="round"
-                    className="animate-fade-in"
-                    style={{ animationDelay: '0.8s' }}
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1, delay: 0.8 }}
                   />
                   <defs>
                     <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -68,21 +86,25 @@ const Hero = () => {
                       <stop offset="100%" stopColor="hsl(189 60% 45%)" />
                     </linearGradient>
                   </defs>
-                </svg>
+                </motion.svg>
               </span>
-            </h1>
+            </motion.h1>
 
-            <p 
-              className="text-muted-foreground text-lg lg:text-xl mb-10 leading-relaxed animate-fade-in"
-              style={{ animationDelay: '0.4s' }}
+            <motion.p 
+              className="text-muted-foreground text-lg lg:text-xl mb-10 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
               Desenvolvimento de software, soluções tecnológicas e marketing digital. 
               <span className="text-foreground font-medium"> Tudo em um só lugar.</span>
-            </p>
+            </motion.p>
 
-            <div 
-              className="flex flex-wrap gap-4 mb-12 animate-fade-in"
-              style={{ animationDelay: '0.5s' }}
+            <motion.div 
+              className="flex flex-wrap gap-4 mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
               <a 
                 href="#contato" 
@@ -98,12 +120,14 @@ const Hero = () => {
               >
                 Por que nós?
               </a>
-            </div>
+            </motion.div>
 
             {/* Feature badges */}
-            <div 
-              className="flex flex-wrap gap-8 text-sm text-muted-foreground animate-fade-in"
-              style={{ animationDelay: '0.6s' }}
+            <motion.div 
+              className="flex flex-wrap gap-8 text-sm text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
@@ -117,11 +141,16 @@ const Hero = () => {
                 </div>
                 <span className="font-medium">Tecnologia de ponta</span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Visual side */}
-          <div className="hidden lg:flex justify-center items-center relative">
+          <motion.div 
+            className="hidden lg:flex justify-center items-center relative"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
             <div className="relative w-full max-w-lg">
               {/* Decorative ring */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -130,7 +159,12 @@ const Hero = () => {
               </div>
 
               {/* Main mascot with enhanced glow */}
-              <div className="relative z-10 flex justify-center animate-fade-in" style={{ animationDelay: '0.3s' }}>
+              <motion.div 
+                className="relative z-10 flex justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 <div className="relative">
                   <div 
                     className="absolute inset-0 rounded-full blur-[80px] scale-150 opacity-50 animate-pulse-glow"
@@ -142,12 +176,14 @@ const Hero = () => {
                     className="relative z-10 w-72 h-auto animate-float drop-shadow-2xl"
                   />
                 </div>
-              </div>
+              </motion.div>
 
               {/* Floating card 1 */}
-              <div 
-                className="absolute -left-4 top-1/4 bg-card/80 backdrop-blur-xl rounded-2xl border border-border/50 p-4 shadow-soft-lg animate-fade-in hover:shadow-primary transition-shadow duration-300"
-                style={{ animationDelay: '0.5s' }}
+              <motion.div 
+                className="absolute -left-4 top-1/4 bg-card/80 backdrop-blur-xl rounded-2xl border border-border/50 p-4 shadow-soft-lg hover:shadow-primary transition-shadow duration-300"
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
@@ -158,12 +194,14 @@ const Hero = () => {
                     <p className="text-xs text-muted-foreground">Entregues com sucesso</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Floating card 2 */}
-              <div 
-                className="absolute -right-4 bottom-1/4 bg-card/80 backdrop-blur-xl rounded-2xl border border-border/50 p-4 shadow-soft-lg animate-fade-in hover:shadow-primary transition-shadow duration-300"
-                style={{ animationDelay: '0.7s' }}
+              <motion.div 
+                className="absolute -right-4 bottom-1/4 bg-card/80 backdrop-blur-xl rounded-2xl border border-border/50 p-4 shadow-soft-lg hover:shadow-primary transition-shadow duration-300"
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
@@ -174,12 +212,14 @@ const Hero = () => {
                     <p className="text-xs text-muted-foreground">Em cada projeto</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Floating card 3 - New */}
-              <div 
-                className="absolute left-1/2 -translate-x-1/2 -bottom-4 bg-card/80 backdrop-blur-xl rounded-2xl border border-border/50 p-4 shadow-soft-lg animate-fade-in hover:shadow-primary transition-shadow duration-300"
-                style={{ animationDelay: '0.9s' }}
+              {/* Floating card 3 */}
+              <motion.div 
+                className="absolute left-1/2 -translate-x-1/2 -bottom-4 bg-card/80 backdrop-blur-xl rounded-2xl border border-border/50 p-4 shadow-soft-lg hover:shadow-primary transition-shadow duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1 }}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
@@ -190,9 +230,9 @@ const Hero = () => {
                     <p className="text-xs text-muted-foreground">Soluções criativas</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 

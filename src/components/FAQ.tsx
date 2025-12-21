@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import mascotSagaz from '@/assets/mascot-sagaz.png';
 import { HelpCircle } from 'lucide-react';
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
 
 const faqs = [
   {
@@ -40,36 +41,43 @@ const FAQ = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Content */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
-              <HelpCircle className="w-4 h-4 text-primary" />
-              <span className="text-sm font-semibold text-primary uppercase tracking-wider">FAQ</span>
-            </div>
+            <ScrollReveal animation="fade-up">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
+                <HelpCircle className="w-4 h-4 text-primary" />
+                <span className="text-sm font-semibold text-primary uppercase tracking-wider">FAQ</span>
+              </div>
+            </ScrollReveal>
             
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-10">
-              Perguntas 
-              <span className="gradient-text"> frequentes</span>
-            </h2>
+            <ScrollReveal animation="fade-up" delay={0.1}>
+              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-10">
+                Perguntas 
+                <span className="gradient-text"> frequentes</span>
+              </h2>
+            </ScrollReveal>
 
-            <Accordion type="single" collapsible className="space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="bg-card border border-border/50 rounded-2xl px-6 overflow-hidden data-[state=open]:border-primary/30 data-[state=open]:shadow-soft transition-all duration-300"
-                >
-                  <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-5 text-base font-semibold [&[data-state=open]]:text-primary">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <StaggerContainer staggerDelay={0.1}>
+              <Accordion type="single" collapsible className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <StaggerItem key={index}>
+                    <AccordionItem
+                      value={`item-${index}`}
+                      className="bg-card border border-border/50 rounded-2xl px-6 overflow-hidden data-[state=open]:border-primary/30 data-[state=open]:shadow-soft transition-all duration-300"
+                    >
+                      <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-5 text-base font-semibold [&[data-state=open]]:text-primary">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </StaggerItem>
+                ))}
+              </Accordion>
+            </StaggerContainer>
           </div>
 
           {/* Mascot */}
-          <div className="hidden lg:flex justify-center items-center sticky top-32">
+          <ScrollReveal animation="zoom-in" delay={0.3} className="hidden lg:flex justify-center items-center sticky top-32">
             <div className="relative">
               <div 
                 className="absolute inset-0 rounded-full blur-[80px] scale-125 opacity-40"
@@ -81,7 +89,7 @@ const FAQ = () => {
                 className="relative z-10 w-64 h-auto drop-shadow-2xl animate-float"
               />
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
