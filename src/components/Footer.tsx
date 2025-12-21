@@ -1,6 +1,8 @@
 import { ArrowUp } from 'lucide-react';
+import { forwardRef } from 'react';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
 
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -8,14 +10,14 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-foreground">
+    <footer ref={ref} className="relative overflow-hidden bg-foreground">
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/10 opacity-50" />
       
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <ScrollReveal animation="fade-up" className="lg:col-span-2">
             <a href="#" className="inline-flex items-center gap-3 mb-6 group">
               <img 
                 src="/lovable-uploads/b3a367cb-bf12-4c24-9ffd-364d2b882b3a.png" 
@@ -39,28 +41,34 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Links */}
-          <div>
+          <ScrollReveal animation="fade-up" delay={0.1}>
             <h4 className="font-bold mb-6 text-white text-lg">Links</h4>
             <ul className="space-y-4">
-              {['Home', 'Sobre', 'Serviços', 'FAQ', 'Contato'].map((link) => (
-                <li key={link}>
+              {[
+                { name: 'Home', href: '#' },
+                { name: 'Sobre', href: '#sobre' },
+                { name: 'Serviços', href: '#servicos' },
+                { name: 'FAQ', href: '#faq' },
+                { name: 'Contato', href: '#contato' },
+              ].map((link) => (
+                <li key={link.name}>
                   <a 
-                    href={link === 'Home' ? '#' : `#${link.toLowerCase()}`} 
+                    href={link.href} 
                     className="text-white/60 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                   >
                     <span className="w-0 h-px bg-white group-hover:w-4 transition-all duration-300" />
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </ScrollReveal>
 
           {/* Contact */}
-          <div>
+          <ScrollReveal animation="fade-up" delay={0.2}>
             <h4 className="font-bold mb-6 text-white text-lg">Contato</h4>
             <ul className="space-y-4 text-white/60">
               <li className="hover:text-white transition-colors">(16) 99355-5072</li>
@@ -71,7 +79,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Bottom */}
@@ -83,6 +91,7 @@ const Footer = () => {
           <button
             onClick={scrollToTop}
             className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white/70 hover:bg-white/20 hover:text-white transition-all duration-300 hover:-translate-y-1"
+            aria-label="Voltar ao topo"
           >
             <ArrowUp className="w-5 h-5" />
           </button>
@@ -90,6 +99,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = 'Footer';
 
 export default Footer;
