@@ -5,46 +5,100 @@ import {
   Megaphone, 
   BarChart3, 
   Palette,
-  ArrowUpRight,
 } from 'lucide-react';
-import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
+import { ScrollReveal } from '@/components/ui/scroll-reveal';
+import { BentoCard, BentoGrid } from '@/components/ui/bento-grid';
 
 const services = [
   {
-    icon: Code,
-    title: 'Desenvolvimento Web',
+    Icon: Code,
+    name: 'Desenvolvimento Web',
     description: 'Sites, landing pages e aplicações web modernas que convertem visitantes em clientes.',
-    color: 'from-blue-500/20 to-cyan-500/20',
+    href: '#contato',
+    cta: 'Saiba mais',
+    background: (
+      <img 
+        src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop" 
+        alt="Web Development" 
+        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
+      />
+    ),
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
   },
   {
-    icon: Smartphone,
-    title: 'Aplicativos Mobile',
+    Icon: Smartphone,
+    name: 'Aplicativos Mobile',
     description: 'Apps nativos e híbridos para iOS e Android com foco em usabilidade e performance.',
-    color: 'from-purple-500/20 to-pink-500/20',
+    href: '#contato',
+    cta: 'Saiba mais',
+    background: (
+      <img 
+        src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" 
+        alt="Mobile Apps" 
+        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
+      />
+    ),
+    className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
   },
   {
-    icon: Globe,
-    title: 'Sistemas Personalizados',
+    Icon: Globe,
+    name: 'Sistemas Personalizados',
     description: 'Soluções sob medida para automatizar processos e otimizar a gestão do seu negócio.',
-    color: 'from-green-500/20 to-emerald-500/20',
+    href: '#contato',
+    cta: 'Saiba mais',
+    background: (
+      <img 
+        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
+        alt="Custom Systems" 
+        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
+      />
+    ),
+    className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
   },
   {
-    icon: Megaphone,
-    title: 'Marketing Digital',
+    Icon: Megaphone,
+    name: 'Marketing Digital',
     description: 'Gestão de redes sociais, tráfego pago, SEO e estratégias de conteúdo.',
-    color: 'from-orange-500/20 to-yellow-500/20',
+    href: '#contato',
+    cta: 'Saiba mais',
+    background: (
+      <img 
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" 
+        alt="Digital Marketing" 
+        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
+      />
+    ),
+    className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
   },
   {
-    icon: BarChart3,
-    title: 'Análise de Dados',
+    Icon: BarChart3,
+    name: 'Análise de Dados',
     description: 'Transformamos dados em insights para decisões mais inteligentes.',
-    color: 'from-indigo-500/20 to-violet-500/20',
+    href: '#contato',
+    cta: 'Saiba mais',
+    background: (
+      <img 
+        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
+        alt="Data Analytics" 
+        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
+      />
+    ),
+    className: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-4",
   },
   {
-    icon: Palette,
-    title: 'Design & UX/UI',
+    Icon: Palette,
+    name: 'Design & UX/UI',
     description: 'Interfaces bonitas e funcionais que encantam usuários e fortalecem sua marca.',
-    color: 'from-rose-500/20 to-red-500/20',
+    href: '#contato',
+    cta: 'Saiba mais',
+    background: (
+      <img 
+        src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" 
+        alt="Design UX/UI" 
+        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
+      />
+    ),
+    className: "lg:col-start-1 lg:col-end-4 lg:row-start-4 lg:row-end-5",
   },
 ];
 
@@ -83,33 +137,14 @@ const Services = () => {
           </ScrollReveal>
         </div>
 
-        {/* Services grid */}
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.1}>
-          {services.map((service, index) => (
-            <StaggerItem key={index}>
-              <div
-                className="group relative bg-card rounded-3xl p-8 border border-border/50 hover:border-primary/30 transition-all duration-500 hover:shadow-soft-lg overflow-hidden h-full"
-              >
-                {/* Hover gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary group-hover:to-accent flex items-center justify-center mb-6 transition-all duration-500">
-                    <service.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-500" />
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-foreground mb-3 flex items-center justify-between">
-                    {service.title}
-                    <ArrowUpRight className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all duration-300 transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </h3>
-                  
-                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        {/* Services Bento Grid */}
+        <ScrollReveal animation="fade-up" delay={0.3}>
+          <BentoGrid className="lg:grid-rows-4">
+            {services.map((service) => (
+              <BentoCard key={service.name} {...service} />
+            ))}
+          </BentoGrid>
+        </ScrollReveal>
       </div>
     </section>
   );
