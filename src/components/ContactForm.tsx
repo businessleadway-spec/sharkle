@@ -4,12 +4,14 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Send, Phone, Mail, Instagram, ArrowRight } from 'lucide-react';
+import { Send, Phone, Mail, Instagram, ArrowRight, Loader2 } from 'lucide-react';
 import mascotImpressed from '@/assets/mascot-impressionado.png';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,7 +19,7 @@ const ContactForm = () => {
     agreed: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.agreed) {
@@ -29,17 +31,40 @@ const ContactForm = () => {
       return;
     }
 
-    toast({
-      title: 'Mensagem enviada!',
-      description: 'Entraremos em contato em breve.',
-    });
+    setIsSubmitting(true);
 
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-      agreed: false,
-    });
+    try {
+      const { error } = await supabase
+        .from('leads')
+        .insert({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        });
+
+      if (error) throw error;
+
+      toast({
+        title: 'Mensagem enviada!',
+        description: 'Entraremos em contato em breve.',
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+        agreed: false,
+      });
+    } catch (error) {
+      console.error('Error submitting lead:', error);
+      toast({
+        title: 'Erro ao enviar',
+        description: 'Tente novamente mais tarde.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactItems = [
@@ -183,10 +208,20 @@ const ContactForm = () => {
 
                   <Button 
                     type="submit" 
-                    className="w-full h-12 text-base rounded-xl bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 hover:shadow-primary-lg"
+                    disabled={isSubmitting}
+                    className="w-full h-12 text-base rounded-xl bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 hover:shadow-primary-lg disabled:opacity-50"
                   >
-                    Enviar Mensagem
-                    <Send size={18} className="ml-2" />
+                    {isSubmitting ? (
+                      <>
+                        Enviando...
+                        <Loader2 size={18} className="ml-2 animate-spin" />
+                      </>
+                    ) : (
+                      <>
+                        Enviar Mensagem
+                        <Send size={18} className="ml-2" />
+                      </>
+                    )}
                   </Button>
                 </form>
               </div>
