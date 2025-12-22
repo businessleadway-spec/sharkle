@@ -16,14 +16,8 @@ const services = [
     description: 'Sites, landing pages e aplicações web modernas que convertem visitantes em clientes.',
     href: '#contato',
     cta: 'Saiba mais',
-    background: (
-      <img 
-        src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop" 
-        alt="Web Development" 
-        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
-      />
-    ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+    gradient: "from-primary/20 to-accent/10",
   },
   {
     Icon: Smartphone,
@@ -31,14 +25,8 @@ const services = [
     description: 'Apps nativos e híbridos para iOS e Android com foco em usabilidade e performance.',
     href: '#contato',
     cta: 'Saiba mais',
-    background: (
-      <img 
-        src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" 
-        alt="Mobile Apps" 
-        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
-      />
-    ),
     className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    gradient: "from-purple-500/20 to-pink-500/10",
   },
   {
     Icon: Globe,
@@ -46,14 +34,8 @@ const services = [
     description: 'Soluções sob medida para automatizar processos e otimizar a gestão do seu negócio.',
     href: '#contato',
     cta: 'Saiba mais',
-    background: (
-      <img 
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
-        alt="Custom Systems" 
-        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
-      />
-    ),
     className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+    gradient: "from-green-500/20 to-emerald-500/10",
   },
   {
     Icon: Megaphone,
@@ -61,14 +43,8 @@ const services = [
     description: 'Gestão de redes sociais, tráfego pago, SEO e estratégias de conteúdo.',
     href: '#contato',
     cta: 'Saiba mais',
-    background: (
-      <img 
-        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" 
-        alt="Digital Marketing" 
-        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
-      />
-    ),
     className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2",
+    gradient: "from-orange-500/20 to-yellow-500/10",
   },
   {
     Icon: BarChart3,
@@ -76,14 +52,8 @@ const services = [
     description: 'Transformamos dados em insights para decisões mais inteligentes.',
     href: '#contato',
     cta: 'Saiba mais',
-    background: (
-      <img 
-        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
-        alt="Data Analytics" 
-        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
-      />
-    ),
     className: "lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-4",
+    gradient: "from-indigo-500/20 to-violet-500/10",
   },
   {
     Icon: Palette,
@@ -91,14 +61,8 @@ const services = [
     description: 'Interfaces bonitas e funcionais que encantam usuários e fortalecem sua marca.',
     href: '#contato',
     cta: 'Saiba mais',
-    background: (
-      <img 
-        src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" 
-        alt="Design UX/UI" 
-        className="absolute -right-20 -top-20 opacity-60 object-cover w-full h-full"
-      />
-    ),
     className: "lg:col-start-1 lg:col-end-4 lg:row-start-4 lg:row-end-5",
+    gradient: "from-rose-500/20 to-red-500/10",
   },
 ];
 
