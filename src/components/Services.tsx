@@ -6,7 +6,7 @@ import {
   BarChart3, 
   Palette,
 } from 'lucide-react';
-import { ScrollReveal } from '@/components/ui/scroll-reveal';
+import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
 import { BentoCard, BentoGrid } from '@/components/ui/bento-grid';
 
 const services = [
@@ -102,13 +102,15 @@ const Services = () => {
         </div>
 
         {/* Services Bento Grid */}
-        <ScrollReveal animation="fade-up" delay={0.3}>
+        <StaggerContainer staggerDelay={0.15}>
           <BentoGrid className="lg:grid-rows-4">
-            {services.map((service) => (
-              <BentoCard key={service.name} {...service} />
+            {services.map((service, index) => (
+              <StaggerItem key={service.name}>
+                <BentoCard {...service} />
+              </StaggerItem>
             ))}
           </BentoGrid>
-        </ScrollReveal>
+        </StaggerContainer>
       </div>
     </section>
   );
