@@ -104,9 +104,9 @@ const Services = () => {
         {/* Services Bento Grid */}
         <StaggerContainer staggerDelay={0.15}>
           <BentoGrid className="lg:grid-rows-4">
-            {services.map((service, index) => (
-              <StaggerItem key={service.name}>
-                <BentoCard {...service} />
+            {services.map((service) => (
+              <StaggerItem key={service.name} className={service.className}>
+                <BentoCard {...service} className="h-full" />
               </StaggerItem>
             ))}
           </BentoGrid>
