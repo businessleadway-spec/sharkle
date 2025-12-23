@@ -12,8 +12,9 @@ const features = [
 const About = () => {
   return (
     <section id="sobre" className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background" />
+      {/* Aurora background */}
+      <div className="absolute inset-0 aurora-bg opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -22,14 +23,16 @@ const About = () => {
             <div className="relative">
               {/* Decorative elements */}
               <div className="absolute -inset-8">
-                <div className="absolute top-0 left-0 w-24 h-24 border-l-2 border-t-2 border-primary/20 rounded-tl-3xl" />
-                <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-accent/20 rounded-br-3xl" />
+                <div className="absolute top-0 left-0 w-24 h-24 border-l-2 border-t-2 border-primary/30 rounded-tl-3xl" />
+                <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-accent/30 rounded-br-3xl" />
               </div>
               
-              {/* Glow effect */}
+              {/* Aurora glow effect */}
               <div 
-                className="absolute inset-0 rounded-full blur-[80px] scale-125 opacity-40"
-                style={{ background: 'radial-gradient(circle, hsl(204 37% 36% / 0.3) 0%, hsl(189 60% 45% / 0.2) 50%, transparent 70%)' }}
+                className="absolute inset-0 rounded-full blur-[100px] scale-150 opacity-50 animate-pulse-glow"
+                style={{ 
+                  background: 'radial-gradient(circle, hsl(204 80% 60% / 0.3) 0%, hsl(280 70% 60% / 0.2) 50%, transparent 70%)' 
+                }}
               />
               
               <img 
@@ -43,13 +46,13 @@ const About = () => {
           {/* Content */}
           <div className="order-1 lg:order-2">
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-6 shadow-glow">
                 <span className="text-sm font-semibold text-primary uppercase tracking-wider">Sobre nós</span>
               </div>
             </ScrollReveal>
             
             <ScrollReveal animation="fade-up" delay={0.1}>
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-6">
+              <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-6">
                 Parceria que impulsiona 
                 <span className="gradient-text"> resultados.</span>
               </h2>
@@ -68,10 +71,10 @@ const About = () => {
               {features.map((feature, index) => (
                 <StaggerItem key={index}>
                   <div 
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+                    className="flex items-center gap-4 p-4 rounded-2xl glass border border-border/30 hover:border-primary/30 hover:shadow-glow transition-all duration-500 group"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="w-5 h-5 text-white" />
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 shadow-primary group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="w-5 h-5 text-primary-foreground" />
                     </div>
                     <span className="text-foreground font-medium">{feature.text}</span>
                   </div>
@@ -88,9 +91,9 @@ const About = () => {
               ].map((stat, index) => (
                 <StaggerItem key={index}>
                   <div 
-                    className="text-center p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/10 border border-primary/10 hover:border-primary/30 transition-all duration-300"
+                    className="text-center p-6 rounded-2xl glass border border-primary/10 hover:border-primary/30 hover:shadow-glow transition-all duration-500"
                   >
-                    <p className="text-3xl lg:text-4xl font-bold gradient-text">{stat.value}</p>
+                    <p className="text-3xl lg:text-4xl font-display font-bold gradient-text">{stat.value}</p>
                     <p className="text-sm text-muted-foreground mt-1 font-medium">{stat.label}</p>
                   </div>
                 </StaggerItem>
