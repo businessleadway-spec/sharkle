@@ -76,10 +76,10 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Crie fácil.
+              Seja um tubarão
               <br />
               <span className="relative inline-block">
-                <span className="gradient-text">Cresça rápido.</span>
+                <span className="gradient-text">no mundo empresarial.</span>
                 <motion.svg 
                   className="absolute -bottom-2 left-0 w-full" 
                   viewBox="0 0 300 12" 
