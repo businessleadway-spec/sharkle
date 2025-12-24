@@ -28,6 +28,7 @@ export function InfiniteSlider({
         style={{
           gap: `${gap}px`,
           animationDuration: `${duration}s`,
+          willChange: 'transform',
         }}
       >
         {children}
