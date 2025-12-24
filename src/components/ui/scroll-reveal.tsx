@@ -16,27 +16,27 @@ interface ScrollRevealProps {
 
 const animations: Record<AnimationType, Variants> = {
   'fade-up': {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   },
   'fade-down': {
-    hidden: { opacity: 0, y: -40 },
+    hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0 },
   },
   'fade-left': {
-    hidden: { opacity: 0, x: 40 },
+    hidden: { opacity: 0, x: 20 },
     visible: { opacity: 1, x: 0 },
   },
   'fade-right': {
-    hidden: { opacity: 0, x: -40 },
+    hidden: { opacity: 0, x: -20 },
     visible: { opacity: 1, x: 0 },
   },
   'zoom-in': {
-    hidden: { opacity: 0, scale: 0.9 },
+    hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1 },
   },
   'zoom-out': {
-    hidden: { opacity: 0, scale: 1.1 },
+    hidden: { opacity: 0, scale: 1.05 },
     visible: { opacity: 1, scale: 1 },
   },
 };
@@ -45,12 +45,12 @@ export function ScrollReveal({
   children,
   animation = 'fade-up',
   delay = 0,
-  duration = 0.6,
+  duration = 0.5,
   className = '',
   once = true,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, margin: '-100px' });
+  const isInView = useInView(ref, { once, margin: '-50px' });
 
   return (
     <motion.div
@@ -61,9 +61,10 @@ export function ScrollReveal({
       transition={{
         duration,
         delay,
-        ease: [0.25, 0.4, 0.25, 1],
+        ease: [0.4, 0, 0.2, 1],
       }}
       className={className}
+      style={{ willChange: 'opacity, transform' }}
     >
       {children}
     </motion.div>
@@ -115,14 +116,15 @@ export function StaggerItem({ children, className = '' }: StaggerItemProps) {
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 30 },
+        hidden: { opacity: 0, y: 15 },
         visible: { opacity: 1, y: 0 },
       }}
       transition={{
-        duration: 0.5,
-        ease: [0.25, 0.4, 0.25, 1],
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1],
       }}
       className={className}
+      style={{ willChange: 'opacity, transform' }}
     >
       {children}
     </motion.div>

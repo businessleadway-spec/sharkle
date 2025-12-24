@@ -8,36 +8,21 @@ const Hero = () => {
       {/* Mesh gradient background */}
       <div className="absolute inset-0 mesh-gradient" />
       
-      {/* Animated aurora orbs */}
+      {/* Optimized aurora orbs using CSS animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          className="absolute top-20 right-[10%] w-[700px] h-[700px] rounded-full blur-[150px]"
-          style={{ background: 'radial-gradient(circle, hsl(204 80% 60% / 0.2) 0%, transparent 60%)' }}
-          animate={{ 
-            scale: [1, 1.1, 1],
-            x: [0, 30, 0],
-            y: [0, -20, 0],
+        <div 
+          className="absolute top-20 right-[10%] w-[500px] h-[500px] rounded-full blur-[100px] animate-aurora-orb-1"
+          style={{ 
+            background: 'radial-gradient(circle, hsl(204 80% 60% / 0.15) 0%, transparent 60%)',
+            willChange: 'transform',
           }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
-        <motion.div 
-          className="absolute bottom-10 left-[5%] w-[600px] h-[600px] rounded-full blur-[130px]"
-          style={{ background: 'radial-gradient(circle, hsl(280 70% 60% / 0.15) 0%, transparent 60%)' }}
-          animate={{ 
-            scale: [1, 1.15, 1],
-            x: [0, -20, 0],
-            y: [0, 30, 0],
+        <div 
+          className="absolute bottom-10 left-[5%] w-[400px] h-[400px] rounded-full blur-[80px] animate-aurora-orb-2"
+          style={{ 
+            background: 'radial-gradient(circle, hsl(280 70% 60% / 0.1) 0%, transparent 60%)',
+            willChange: 'transform',
           }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-        <motion.div 
-          className="absolute top-1/2 left-1/3 w-[500px] h-[500px] rounded-full blur-[120px]"
-          style={{ background: 'radial-gradient(circle, hsl(189 90% 50% / 0.12) 0%, transparent 60%)' }}
-          animate={{ 
-            scale: [1, 1.08, 1],
-            rotate: [0, 10, 0],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         />
       </div>
 
@@ -164,30 +149,26 @@ const Hero = () => {
           {/* Visual side */}
           <motion.div 
             className="hidden lg:flex justify-center items-center relative"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="relative w-full max-w-lg">
-              {/* Decorative rings with aurora colors */}
+              {/* Decorative rings with CSS animations */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div 
-                  className="w-80 h-80 rounded-full"
-                  style={{ border: '1px solid hsl(204 80% 60% / 0.15)' }}
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                <div 
+                  className="w-72 h-72 rounded-full animate-spin-slow"
+                  style={{ 
+                    border: '1px solid hsl(204 80% 60% / 0.12)',
+                    willChange: 'transform',
+                  }}
                 />
-                <motion.div 
-                  className="absolute w-72 h-72 rounded-full"
-                  style={{ border: '1px solid hsl(280 70% 60% / 0.1)' }}
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                />
-                <motion.div 
-                  className="absolute w-64 h-64 rounded-full"
-                  style={{ border: '1px solid hsl(189 90% 50% / 0.1)' }}
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                <div 
+                  className="absolute w-60 h-60 rounded-full animate-spin-reverse"
+                  style={{ 
+                    border: '1px solid hsl(280 70% 60% / 0.08)',
+                    willChange: 'transform',
+                  }}
                 />
               </div>
 

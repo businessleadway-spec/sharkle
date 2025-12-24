@@ -27,11 +27,12 @@ const About = () => {
                 <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-accent/30 rounded-br-3xl" />
               </div>
               
-              {/* Aurora glow effect */}
+              {/* Aurora glow effect - optimized */}
               <div 
-                className="absolute inset-0 rounded-full blur-[100px] scale-150 opacity-50 animate-pulse-glow"
+                className="absolute inset-0 rounded-full blur-[80px] scale-125 opacity-40"
                 style={{ 
-                  background: 'radial-gradient(circle, hsl(204 80% 60% / 0.3) 0%, hsl(280 70% 60% / 0.2) 50%, transparent 70%)' 
+                  background: 'radial-gradient(circle, hsl(204 80% 60% / 0.25) 0%, hsl(280 70% 60% / 0.15) 50%, transparent 70%)',
+                  willChange: 'auto',
                 }}
               />
               
