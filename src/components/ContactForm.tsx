@@ -8,16 +8,53 @@ import { Send, Phone, Mail, Instagram, ArrowRight, Loader2 } from 'lucide-react'
 import mascotImpressed from '@/assets/mascot-impressionado.png';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
 import { supabase } from '@/integrations/supabase/client';
+import { z } from 'zod';
+
+// Validation schema for contact form
+const contactSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(2, { message: 'Nome deve ter pelo menos 2 caracteres' })
+    .max(100, { message: 'Nome deve ter no máximo 100 caracteres' })
+    .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, { message: 'Nome contém caracteres inválidos' }),
+  email: z
+    .string()
+    .trim()
+    .email({ message: 'Email inválido' })
+    .max(254, { message: 'Email deve ter no máximo 254 caracteres' }),
+  message: z
+    .string()
+    .trim()
+    .min(10, { message: 'Mensagem deve ter pelo menos 10 caracteres' })
+    .max(2000, { message: 'Mensagem deve ter no máximo 2000 caracteres' }),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
     agreed: false,
   });
+
+  const validateField = (field: keyof ContactFormData, value: string) => {
+    try {
+      contactSchema.shape[field].parse(value);
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setErrors(prev => ({ ...prev, [field]: error.errors[0]?.message }));
+      }
+      return false;
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,15 +68,41 @@ const ContactForm = () => {
       return;
     }
 
+    // Validate all fields
+    const validationResult = contactSchema.safeParse({
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    });
+
+    if (!validationResult.success) {
+      const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
+      validationResult.error.errors.forEach((err) => {
+        const field = err.path[0] as keyof ContactFormData;
+        if (!fieldErrors[field]) {
+          fieldErrors[field] = err.message;
+        }
+      });
+      setErrors(fieldErrors);
+      toast({
+        title: 'Dados inválidos',
+        description: 'Por favor, corrija os erros no formulário.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
+      const { data: validData } = validationResult;
+      
       const { error } = await supabase
         .from('leads')
         .insert({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
+          name: validData.name,
+          email: validData.email,
+          message: validData.message,
         });
 
       if (error) throw error;
@@ -55,8 +118,8 @@ const ContactForm = () => {
         message: '',
         agreed: false,
       });
+      setErrors({});
     } catch (error) {
-      console.error('Error submitting lead:', error);
       toast({
         title: 'Erro ao enviar',
         description: 'Tente novamente mais tarde.',
@@ -156,11 +219,19 @@ const ContactForm = () => {
                     </label>
                     <Input
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, name: e.target.value });
+                        if (errors.name) validateField('name', e.target.value);
+                      }}
+                      onBlur={(e) => validateField('name', e.target.value)}
                       required
+                      maxLength={100}
                       placeholder="Seu nome"
-                      className="bg-background border-border h-12 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                      className={`bg-background border-border h-12 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.name ? 'border-destructive' : ''}`}
                     />
+                    {errors.name && (
+                      <p className="text-destructive text-sm mt-1">{errors.name}</p>
+                    )}
                   </div>
 
                   <div>
@@ -170,11 +241,19 @@ const ContactForm = () => {
                     <Input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, email: e.target.value });
+                        if (errors.email) validateField('email', e.target.value);
+                      }}
+                      onBlur={(e) => validateField('email', e.target.value)}
                       required
+                      maxLength={254}
                       placeholder="seu@email.com"
-                      className="bg-background border-border h-12 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                      className={`bg-background border-border h-12 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.email ? 'border-destructive' : ''}`}
                     />
+                    {errors.email && (
+                      <p className="text-destructive text-sm mt-1">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
@@ -183,12 +262,23 @@ const ContactForm = () => {
                     </label>
                     <Textarea
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, message: e.target.value });
+                        if (errors.message) validateField('message', e.target.value);
+                      }}
+                      onBlur={(e) => validateField('message', e.target.value)}
                       required
+                      maxLength={2000}
                       placeholder="Como podemos ajudar?"
                       rows={4}
-                      className="bg-background border-border resize-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                      className={`bg-background border-border resize-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.message ? 'border-destructive' : ''}`}
                     />
+                    {errors.message && (
+                      <p className="text-destructive text-sm mt-1">{errors.message}</p>
+                    )}
+                    <p className="text-muted-foreground text-xs mt-1 text-right">
+                      {formData.message.length}/2000
+                    </p>
                   </div>
 
                   <div className="flex items-start gap-3">
