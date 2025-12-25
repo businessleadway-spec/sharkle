@@ -4,21 +4,21 @@ import mascotJoia from '@/assets/mascot-joia.png';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 lg:pt-0 overflow-hidden aurora-bg noise">
+    <section className="relative min-h-screen flex items-center pt-24 pb-12 sm:pt-20 lg:pt-0 lg:pb-0 overflow-hidden aurora-bg noise">
       {/* Mesh gradient background */}
       <div className="absolute inset-0 mesh-gradient" />
       
       {/* Optimized aurora orbs using CSS animations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
-          className="absolute top-20 right-[10%] w-[500px] h-[500px] rounded-full blur-[100px] animate-aurora-orb-1"
+          className="absolute top-20 right-[10%] w-[300px] sm:w-[400px] lg:w-[500px] h-[300px] sm:h-[400px] lg:h-[500px] rounded-full blur-[80px] lg:blur-[100px] animate-aurora-orb-1"
           style={{ 
             background: 'radial-gradient(circle, hsl(204 80% 60% / 0.15) 0%, transparent 60%)',
             willChange: 'transform',
           }}
         />
         <div 
-          className="absolute bottom-10 left-[5%] w-[400px] h-[400px] rounded-full blur-[80px] animate-aurora-orb-2"
+          className="absolute bottom-10 left-[5%] w-[250px] sm:w-[300px] lg:w-[400px] h-[250px] sm:h-[300px] lg:h-[400px] rounded-full blur-[60px] lg:blur-[80px] animate-aurora-orb-2"
           style={{ 
             background: 'radial-gradient(circle, hsl(280 70% 60% / 0.1) 0%, transparent 60%)',
             willChange: 'transform',
@@ -35,28 +35,28 @@ const Hero = () => {
         }}
       />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Text content */}
           <motion.div 
-            className="max-w-xl"
+            className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
           >
             {/* Badge */}
             <motion.div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-8"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass border border-primary/20 mb-6 sm:mb-8"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Soluções digitais que transformam</span>
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+              <span className="text-xs sm:text-sm font-medium text-primary">Soluções digitais que transformam</span>
             </motion.div>
 
             <motion.h1 
-              className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.05] tracking-tight mb-6"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.1] tracking-tight mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -66,7 +66,7 @@ const Hero = () => {
               <span className="relative inline-block">
                 <span className="gradient-text">no mundo empresarial.</span>
                 <motion.svg 
-                  className="absolute -bottom-2 left-0 w-full" 
+                  className="absolute -bottom-1 sm:-bottom-2 left-0 w-full" 
                   viewBox="0 0 300 12" 
                   fill="none"
                   initial={{ opacity: 0 }}
@@ -94,7 +94,7 @@ const Hero = () => {
             </motion.h1>
 
             <motion.p 
-              className="text-muted-foreground text-lg lg:text-xl mb-10 leading-relaxed"
+              className="text-muted-foreground text-base sm:text-lg lg:text-xl mb-8 sm:mb-10 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -104,21 +104,21 @@ const Hero = () => {
             </motion.p>
 
             <motion.div 
-              className="flex flex-wrap gap-4 mb-12"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-8 sm:mb-12 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               <a 
                 href="#contato" 
-                className="btn-primary"
+                className="btn-primary w-full sm:w-auto"
               >
                 <span className="relative z-10">Fale Conosco</span>
                 <ArrowRight size={18} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               <a 
                 href="#sobre" 
-                className="btn-secondary"
+                className="btn-secondary w-full sm:w-auto"
               >
                 Por que nós?
               </a>
@@ -126,27 +126,49 @@ const Hero = () => {
 
             {/* Feature badges */}
             <motion.div 
-              className="flex flex-wrap gap-8 text-sm text-muted-foreground"
+              className="flex flex-wrap gap-4 sm:gap-8 text-sm text-muted-foreground justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-xl glass border border-primary/20 flex items-center justify-center shadow-glow">
-                  <Zap className="w-5 h-5 text-primary" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl glass border border-primary/20 flex items-center justify-center shadow-glow">
+                  <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                 </div>
-                <span className="font-medium">Entregas ágeis</span>
+                <span className="font-medium text-sm sm:text-base">Entregas ágeis</span>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-xl glass border border-accent/20 flex items-center justify-center shadow-glow">
-                  <Shield className="w-5 h-5 text-accent" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl glass border border-accent/20 flex items-center justify-center shadow-glow">
+                  <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                 </div>
-                <span className="font-medium">Tecnologia de ponta</span>
+                <span className="font-medium text-sm sm:text-base">Tecnologia de ponta</span>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Visual side */}
+          {/* Visual side - Mobile version */}
+          <motion.div 
+            className="flex lg:hidden justify-center items-center mt-8"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <div className="relative">
+              <div 
+                className="absolute inset-0 rounded-full blur-[60px] scale-125 animate-pulse-glow"
+                style={{ 
+                  background: 'radial-gradient(circle, hsl(204 80% 60% / 0.3) 0%, hsl(280 70% 60% / 0.15) 40%, transparent 70%)' 
+                }}
+              />
+              <img 
+                src={mascotJoia} 
+                alt="Sharkle Mascot" 
+                className="relative z-10 w-40 sm:w-52 h-auto animate-float drop-shadow-2xl"
+              />
+            </div>
+          </motion.div>
+
+          {/* Visual side - Desktop version */}
           <motion.div 
             className="hidden lg:flex justify-center items-center relative"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -256,7 +278,7 @@ const Hero = () => {
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-24 sm:h-40 bg-gradient-to-t from-background via-background/80 to-transparent" />
     </section>
   );
 };

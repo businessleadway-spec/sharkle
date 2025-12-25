@@ -33,40 +33,40 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="section-padding relative overflow-hidden">
+    <section id="faq" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Content */}
           <div>
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
-                <HelpCircle className="w-4 h-4 text-primary" />
-                <span className="text-sm font-semibold text-primary uppercase tracking-wider">FAQ</span>
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/5 border border-primary/10 mb-4 sm:mb-6">
+                <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">FAQ</span>
               </div>
             </ScrollReveal>
             
             <ScrollReveal animation="fade-up" delay={0.1}>
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-10">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-8 sm:mb-10">
                 Perguntas 
                 <span className="gradient-text"> frequentes</span>
               </h2>
             </ScrollReveal>
 
             <StaggerContainer staggerDelay={0.1}>
-              <Accordion type="single" collapsible className="space-y-4">
+              <Accordion type="single" collapsible className="space-y-3 sm:space-y-4">
                 {faqs.map((faq, index) => (
                   <StaggerItem key={index}>
                     <AccordionItem
                       value={`item-${index}`}
-                      className="bg-card border border-border/50 rounded-2xl px-6 overflow-hidden data-[state=open]:border-primary/30 data-[state=open]:shadow-soft transition-all duration-300"
+                      className="bg-card border border-border/50 rounded-xl sm:rounded-2xl px-4 sm:px-6 overflow-hidden data-[state=open]:border-primary/30 data-[state=open]:shadow-soft transition-all duration-300"
                     >
-                      <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-5 text-base font-semibold [&[data-state=open]]:text-primary">
+                      <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-4 sm:py-5 text-sm sm:text-base font-semibold [&[data-state=open]]:text-primary">
                         {faq.question}
                       </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                      <AccordionContent className="text-muted-foreground pb-4 sm:pb-5 leading-relaxed text-sm sm:text-base">
                         {faq.answer}
                       </AccordionContent>
                     </AccordionItem>
