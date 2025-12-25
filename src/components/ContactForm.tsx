@@ -137,54 +137,54 @@ const ContactForm = () => {
   ];
 
   return (
-    <section id="contato" className="section-padding relative overflow-hidden bg-background">
+    <section id="contato" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-background">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[150px] opacity-20"
+      <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full blur-[100px] sm:blur-[150px] opacity-20"
         style={{ background: 'radial-gradient(circle, hsl(204 37% 36% / 0.3) 0%, transparent 70%)' }}
       />
       
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left side - Info */}
           <div>
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/10 mb-6">
-                <span className="text-sm font-semibold text-primary uppercase tracking-wider">Contato</span>
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/5 border border-primary/10 mb-4 sm:mb-6">
+                <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">Contato</span>
               </div>
             </ScrollReveal>
             
             <ScrollReveal animation="fade-up" delay={0.1}>
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground leading-tight mb-4 sm:mb-6">
                 Vamos 
                 <span className="gradient-text"> conversar?</span>
               </h2>
             </ScrollReveal>
             
             <ScrollReveal animation="fade-up" delay={0.2}>
-              <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+              <p className="text-muted-foreground text-base sm:text-lg mb-8 sm:mb-10 leading-relaxed">
                 Estamos prontos para ouvir suas ideias e transformá-las em realidade. 
                 Entre em contato e vamos criar algo incrível juntos.
               </p>
             </ScrollReveal>
 
             {/* Contact info */}
-            <StaggerContainer className="space-y-4 mb-10" staggerDelay={0.1}>
+            <StaggerContainer className="space-y-3 sm:space-y-4 mb-8 sm:mb-10" staggerDelay={0.1}>
               {contactItems.map((item, index) => (
                 <StaggerItem key={index}>
                   <a
                     href={item.href}
                     target={item.href.startsWith('http') ? '_blank' : undefined}
                     rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
+                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-card border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary group-hover:to-accent flex items-center justify-center transition-all duration-300">
-                      <item.icon className="w-5 h-5 text-primary group-hover:text-white transition-colors duration-300" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary group-hover:to-accent flex items-center justify-center transition-all duration-300">
+                      <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <div className="flex-1">
-                      <p className="text-sm text-muted-foreground">{item.label}</p>
-                      <p className="text-foreground font-semibold">{item.value}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs sm:text-sm text-muted-foreground">{item.label}</p>
+                      <p className="text-foreground font-semibold text-sm sm:text-base truncate">{item.value}</p>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all duration-300 transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all duration-300 transform group-hover:translate-x-1 flex-shrink-0" />
                   </a>
                 </StaggerItem>
               ))}
@@ -202,19 +202,19 @@ const ContactForm = () => {
 
           {/* Right side - Form */}
           <ScrollReveal animation="fade-left" delay={0.2}>
-            <div className="bg-card p-8 lg:p-10 rounded-3xl border border-border/50 shadow-soft-lg relative overflow-hidden">
+            <div className="bg-card p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-border/50 shadow-soft-lg relative overflow-hidden">
               {/* Form decoration */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-accent/5 rounded-full blur-3xl" />
+              <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-br from-primary/10 to-accent/5 rounded-full blur-3xl" />
               
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Envie sua mensagem</h3>
-                <p className="text-muted-foreground text-sm mb-8">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-1 sm:mb-2">Envie sua mensagem</h3>
+                <p className="text-muted-foreground text-xs sm:text-sm mb-6 sm:mb-8">
                   Responderemos o mais rápido possível.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
                   <div>
-                    <label className="block text-sm font-semibold text-foreground mb-2">
+                    <label className="block text-xs sm:text-sm font-semibold text-foreground mb-1.5 sm:mb-2">
                       Nome
                     </label>
                     <Input
@@ -227,15 +227,15 @@ const ContactForm = () => {
                       required
                       maxLength={100}
                       placeholder="Seu nome"
-                      className={`bg-background border-border h-12 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.name ? 'border-destructive' : ''}`}
+                      className={`bg-background border-border h-10 sm:h-12 rounded-lg sm:rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.name ? 'border-destructive' : ''}`}
                     />
                     {errors.name && (
-                      <p className="text-destructive text-sm mt-1">{errors.name}</p>
+                      <p className="text-destructive text-xs sm:text-sm mt-1">{errors.name}</p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-foreground mb-2">
+                    <label className="block text-xs sm:text-sm font-semibold text-foreground mb-1.5 sm:mb-2">
                       Email
                     </label>
                     <Input
@@ -249,15 +249,15 @@ const ContactForm = () => {
                       required
                       maxLength={254}
                       placeholder="seu@email.com"
-                      className={`bg-background border-border h-12 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.email ? 'border-destructive' : ''}`}
+                      className={`bg-background border-border h-10 sm:h-12 rounded-lg sm:rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.email ? 'border-destructive' : ''}`}
                     />
                     {errors.email && (
-                      <p className="text-destructive text-sm mt-1">{errors.email}</p>
+                      <p className="text-destructive text-xs sm:text-sm mt-1">{errors.email}</p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-foreground mb-2">
+                    <label className="block text-xs sm:text-sm font-semibold text-foreground mb-1.5 sm:mb-2">
                       Mensagem
                     </label>
                     <Textarea
@@ -270,25 +270,25 @@ const ContactForm = () => {
                       required
                       maxLength={2000}
                       placeholder="Como podemos ajudar?"
-                      rows={4}
-                      className={`bg-background border-border resize-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.message ? 'border-destructive' : ''}`}
+                      rows={3}
+                      className={`bg-background border-border resize-none rounded-lg sm:rounded-xl text-sm sm:text-base focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all ${errors.message ? 'border-destructive' : ''}`}
                     />
                     {errors.message && (
-                      <p className="text-destructive text-sm mt-1">{errors.message}</p>
+                      <p className="text-destructive text-xs sm:text-sm mt-1">{errors.message}</p>
                     )}
                     <p className="text-muted-foreground text-xs mt-1 text-right">
                       {formData.message.length}/2000
                     </p>
                   </div>
 
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2 sm:gap-3">
                     <Checkbox
                       id="privacy"
                       checked={formData.agreed}
                       onCheckedChange={(checked) => setFormData({ ...formData, agreed: checked as boolean })}
                       className="mt-0.5"
                     />
-                    <label htmlFor="privacy" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+                    <label htmlFor="privacy" className="text-xs sm:text-sm text-muted-foreground leading-relaxed cursor-pointer">
                       Concordo com a{' '}
                       <a href="#" className="text-primary hover:underline font-medium">
                         Política de Privacidade
@@ -299,7 +299,7 @@ const ContactForm = () => {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full h-12 text-base rounded-xl bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 hover:shadow-primary-lg disabled:opacity-50"
+                    className="w-full h-10 sm:h-12 text-sm sm:text-base rounded-lg sm:rounded-xl bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 hover:shadow-primary-lg disabled:opacity-50"
                   >
                     {isSubmitting ? (
                       <>
