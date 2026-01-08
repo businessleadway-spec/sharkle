@@ -16,27 +16,27 @@ interface ScrollRevealProps {
 
 const animations: Record<AnimationType, Variants> = {
   'fade-up': {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 },
     visible: { opacity: 1, y: 0 },
   },
   'fade-down': {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -15 },
     visible: { opacity: 1, y: 0 },
   },
   'fade-left': {
-    hidden: { opacity: 0, x: 20 },
+    hidden: { opacity: 0, x: 15 },
     visible: { opacity: 1, x: 0 },
   },
   'fade-right': {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, x: -15 },
     visible: { opacity: 1, x: 0 },
   },
   'zoom-in': {
-    hidden: { opacity: 0, scale: 0.95 },
+    hidden: { opacity: 0, scale: 0.97 },
     visible: { opacity: 1, scale: 1 },
   },
   'zoom-out': {
-    hidden: { opacity: 0, scale: 1.05 },
+    hidden: { opacity: 0, scale: 1.03 },
     visible: { opacity: 1, scale: 1 },
   },
 };
@@ -45,12 +45,12 @@ export function ScrollReveal({
   children,
   animation = 'fade-up',
   delay = 0,
-  duration = 0.5,
+  duration = 0.4,
   className = '',
   once = true,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, margin: '-50px' });
+  const isInView = useInView(ref, { once, margin: '-30px' });
 
   return (
     <motion.div
@@ -61,10 +61,9 @@ export function ScrollReveal({
       transition={{
         duration,
         delay,
-        ease: [0.4, 0, 0.2, 1],
+        ease: 'easeOut',
       }}
       className={className}
-      style={{ willChange: 'opacity, transform' }}
     >
       {children}
     </motion.div>
@@ -81,10 +80,10 @@ interface StaggerContainerProps {
 export function StaggerContainer({
   children,
   className = '',
-  staggerDelay = 0.1,
+  staggerDelay = 0.08,
 }: StaggerContainerProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
 
   return (
     <motion.div
@@ -116,15 +115,14 @@ export function StaggerItem({ children, className = '' }: StaggerItemProps) {
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 15 },
+        hidden: { opacity: 0, y: 10 },
         visible: { opacity: 1, y: 0 },
       }}
       transition={{
-        duration: 0.4,
-        ease: [0.4, 0, 0.2, 1],
+        duration: 0.35,
+        ease: 'easeOut',
       }}
       className={className}
-      style={{ willChange: 'opacity, transform' }}
     >
       {children}
     </motion.div>

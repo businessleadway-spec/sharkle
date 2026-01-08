@@ -1,8 +1,6 @@
 import mascotHandshake from '@/assets/mascot-handshake.png';
 import { Check, TrendingUp, Users, Clock } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
 
 const features = [
   { icon: TrendingUp, text: 'Desenvolvimento personalizado' },
@@ -12,28 +10,16 @@ const features = [
 ];
 
 const About = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const imageY = useTransform(scrollYProgress, [0, 1], ['20%', '-20%']);
-  const contentY = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
-
   return (
-    <section ref={sectionRef} id="sobre" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+    <section id="sobre" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
       {/* Aurora background */}
       <div className="absolute inset-0 aurora-bg opacity-50" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Image with parallax */}
-          <motion.div 
-            className="flex justify-center order-2 lg:order-1"
-            style={{ y: imageY }}
-          >
+          {/* Image */}
+          <div className="flex justify-center order-2 lg:order-1">
             <ScrollReveal animation="fade-right">
               <div className="relative">
                 {/* Decorative elements */}
@@ -42,13 +28,10 @@ const About = () => {
                   <div className="absolute bottom-0 right-0 w-16 sm:w-24 h-16 sm:h-24 border-r-2 border-b-2 border-accent/30 rounded-br-2xl sm:rounded-br-3xl" />
                 </div>
                 
-                {/* Aurora glow effect - optimized */}
+                {/* Aurora glow effect */}
                 <div 
                   className="absolute inset-0 rounded-full blur-[60px] sm:blur-[80px] scale-125 opacity-40"
-                  style={{ 
-                    background: 'radial-gradient(circle, hsl(204 80% 60% / 0.25) 0%, hsl(280 70% 60% / 0.15) 50%, transparent 70%)',
-                    willChange: 'auto',
-                  }}
+                  style={{ background: 'radial-gradient(circle, hsl(204 80% 60% / 0.25) 0%, hsl(280 70% 60% / 0.15) 50%, transparent 70%)' }}
                 />
                 
                 <img 
@@ -58,10 +41,10 @@ const About = () => {
                 />
               </div>
             </ScrollReveal>
-          </motion.div>
+          </div>
 
           {/* Content */}
-          <motion.div className="order-1 lg:order-2" style={{ y: contentY }}>
+          <div className="order-1 lg:order-2">
             <ScrollReveal animation="fade-up">
               <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass border border-primary/20 mb-4 sm:mb-6 shadow-glow">
                 <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">Sobre nós</span>
@@ -116,7 +99,7 @@ const About = () => {
                 </StaggerItem>
               ))}
             </StaggerContainer>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
