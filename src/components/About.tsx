@@ -1,6 +1,8 @@
 import mascotHandshake from '@/assets/mascot-handshake.png';
 import { Check, TrendingUp, Users, Clock } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const features = [
   { icon: TrendingUp, text: 'Desenvolvimento personalizado' },
@@ -10,42 +12,56 @@ const features = [
 ];
 
 const About = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const imageY = useTransform(scrollYProgress, [0, 1], ['20%', '-20%']);
+  const contentY = useTransform(scrollYProgress, [0, 1], ['10%', '-10%']);
+
   return (
-    <section id="sobre" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+    <section ref={sectionRef} id="sobre" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
       {/* Aurora background */}
       <div className="absolute inset-0 aurora-bg opacity-50" />
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Image */}
-          <ScrollReveal animation="fade-right" className="flex justify-center order-2 lg:order-1">
-            <div className="relative">
-              {/* Decorative elements */}
-              <div className="absolute -inset-4 sm:-inset-8">
-                <div className="absolute top-0 left-0 w-16 sm:w-24 h-16 sm:h-24 border-l-2 border-t-2 border-primary/30 rounded-tl-2xl sm:rounded-tl-3xl" />
-                <div className="absolute bottom-0 right-0 w-16 sm:w-24 h-16 sm:h-24 border-r-2 border-b-2 border-accent/30 rounded-br-2xl sm:rounded-br-3xl" />
+          {/* Image with parallax */}
+          <motion.div 
+            className="flex justify-center order-2 lg:order-1"
+            style={{ y: imageY }}
+          >
+            <ScrollReveal animation="fade-right">
+              <div className="relative">
+                {/* Decorative elements */}
+                <div className="absolute -inset-4 sm:-inset-8">
+                  <div className="absolute top-0 left-0 w-16 sm:w-24 h-16 sm:h-24 border-l-2 border-t-2 border-primary/30 rounded-tl-2xl sm:rounded-tl-3xl" />
+                  <div className="absolute bottom-0 right-0 w-16 sm:w-24 h-16 sm:h-24 border-r-2 border-b-2 border-accent/30 rounded-br-2xl sm:rounded-br-3xl" />
+                </div>
+                
+                {/* Aurora glow effect - optimized */}
+                <div 
+                  className="absolute inset-0 rounded-full blur-[60px] sm:blur-[80px] scale-125 opacity-40"
+                  style={{ 
+                    background: 'radial-gradient(circle, hsl(204 80% 60% / 0.25) 0%, hsl(280 70% 60% / 0.15) 50%, transparent 70%)',
+                    willChange: 'auto',
+                  }}
+                />
+                
+                <img 
+                  src={mascotHandshake} 
+                  alt="Sharkle Partnership" 
+                  className="relative z-10 w-48 sm:w-64 lg:w-80 h-auto drop-shadow-2xl animate-float"
+                />
               </div>
-              
-              {/* Aurora glow effect - optimized */}
-              <div 
-                className="absolute inset-0 rounded-full blur-[60px] sm:blur-[80px] scale-125 opacity-40"
-                style={{ 
-                  background: 'radial-gradient(circle, hsl(204 80% 60% / 0.25) 0%, hsl(280 70% 60% / 0.15) 50%, transparent 70%)',
-                  willChange: 'auto',
-                }}
-              />
-              
-              <img 
-                src={mascotHandshake} 
-                alt="Sharkle Partnership" 
-                className="relative z-10 w-48 sm:w-64 lg:w-80 h-auto drop-shadow-2xl animate-float"
-              />
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </motion.div>
 
           {/* Content */}
-          <div className="order-1 lg:order-2">
+          <motion.div className="order-1 lg:order-2" style={{ y: contentY }}>
             <ScrollReveal animation="fade-up">
               <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass border border-primary/20 mb-4 sm:mb-6 shadow-glow">
                 <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">Sobre nós</span>
@@ -100,7 +116,7 @@ const About = () => {
                 </StaggerItem>
               ))}
             </StaggerContainer>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

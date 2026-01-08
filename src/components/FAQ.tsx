@@ -7,6 +7,8 @@ import {
 import mascotSagaz from '@/assets/mascot-sagaz.png';
 import { HelpCircle } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const faqs = [
   {
@@ -32,8 +34,16 @@ const faqs = [
 ];
 
 const FAQ = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const mascotY = useTransform(scrollYProgress, [0, 1], ['30%', '-30%']);
+
   return (
-    <section id="faq" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+    <section ref={sectionRef} id="faq" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
@@ -76,20 +86,25 @@ const FAQ = () => {
             </StaggerContainer>
           </div>
 
-          {/* Mascot */}
-          <ScrollReveal animation="zoom-in" delay={0.3} className="hidden lg:flex justify-center items-center sticky top-32">
-            <div className="relative">
-              <div 
-                className="absolute inset-0 rounded-full blur-[80px] scale-125 opacity-40"
-                style={{ background: 'radial-gradient(circle, hsl(189 60% 45% / 0.3) 0%, hsl(204 37% 36% / 0.2) 50%, transparent 70%)' }}
-              />
-              <img 
-                src={mascotSagaz} 
-                alt="Sharkle Mascot" 
-                className="relative z-10 w-64 h-auto drop-shadow-2xl animate-float"
-              />
-            </div>
-          </ScrollReveal>
+          {/* Mascot with parallax */}
+          <motion.div 
+            className="hidden lg:flex justify-center items-center sticky top-32"
+            style={{ y: mascotY }}
+          >
+            <ScrollReveal animation="zoom-in" delay={0.3}>
+              <div className="relative">
+                <div 
+                  className="absolute inset-0 rounded-full blur-[80px] scale-125 opacity-40"
+                  style={{ background: 'radial-gradient(circle, hsl(189 60% 45% / 0.3) 0%, hsl(204 37% 36% / 0.2) 50%, transparent 70%)' }}
+                />
+                <img 
+                  src={mascotSagaz} 
+                  alt="Sharkle Mascot" 
+                  className="relative z-10 w-64 h-auto drop-shadow-2xl animate-float"
+                />
+              </div>
+            </ScrollReveal>
+          </motion.div>
         </div>
       </div>
     </section>
