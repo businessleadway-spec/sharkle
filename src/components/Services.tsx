@@ -8,6 +8,8 @@ import {
 } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
 import { BentoCard, BentoGrid } from '@/components/ui/bento-grid';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const services = [
   {
@@ -67,8 +69,16 @@ const services = [
 ];
 
 const Services = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const gridY = useTransform(scrollYProgress, [0, 1], ['5%', '-5%']);
+
   return (
-    <section id="servicos" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-background">
+    <section ref={sectionRef} id="servicos" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-background">
       {/* Subtle background pattern */}
       <div 
         className="absolute inset-0 opacity-[0.015]"
@@ -101,16 +111,18 @@ const Services = () => {
           </ScrollReveal>
         </div>
 
-        {/* Services Bento Grid */}
-        <StaggerContainer staggerDelay={0.1}>
-          <BentoGrid className="lg:grid-rows-4">
-            {services.map((service) => (
-              <StaggerItem key={service.name} className={service.className}>
-                <BentoCard {...service} className="h-full" />
-              </StaggerItem>
-            ))}
-          </BentoGrid>
-        </StaggerContainer>
+        {/* Services Bento Grid with parallax */}
+        <motion.div style={{ y: gridY }}>
+          <StaggerContainer staggerDelay={0.1}>
+            <BentoGrid className="lg:grid-rows-4">
+              {services.map((service) => (
+                <StaggerItem key={service.name} className={service.className}>
+                  <BentoCard {...service} className="h-full" />
+                </StaggerItem>
+              ))}
+            </BentoGrid>
+          </StaggerContainer>
+        </motion.div>
       </div>
     </section>
   );
