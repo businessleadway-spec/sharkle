@@ -7,8 +7,6 @@ import {
 import mascotSagaz from '@/assets/mascot-sagaz.png';
 import { HelpCircle } from 'lucide-react';
 import { ScrollReveal, StaggerContainer, StaggerItem } from '@/components/ui/scroll-reveal';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
 
 const faqs = [
   {
@@ -34,16 +32,8 @@ const faqs = [
 ];
 
 const FAQ = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const mascotY = useTransform(scrollYProgress, [0, 1], ['30%', '-30%']);
-
   return (
-    <section ref={sectionRef} id="faq" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+    <section id="faq" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
       
@@ -86,11 +76,8 @@ const FAQ = () => {
             </StaggerContainer>
           </div>
 
-          {/* Mascot with parallax */}
-          <motion.div 
-            className="hidden lg:flex justify-center items-center sticky top-32"
-            style={{ y: mascotY }}
-          >
+          {/* Mascot */}
+          <div className="hidden lg:flex justify-center items-center sticky top-32">
             <ScrollReveal animation="zoom-in" delay={0.3}>
               <div className="relative">
                 <div 
@@ -104,7 +91,7 @@ const FAQ = () => {
                 />
               </div>
             </ScrollReveal>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

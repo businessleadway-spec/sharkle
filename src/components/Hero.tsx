@@ -1,39 +1,22 @@
 import { ArrowRight, Zap, Shield, Sparkles } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import mascotJoia from '@/assets/mascot-joia.png';
-import { useRef } from 'react';
 
 const Hero = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-  
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const mascotY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center pt-24 pb-12 sm:pt-20 lg:pt-0 lg:pb-0 overflow-hidden aurora-bg noise">
-      {/* Mesh gradient background with parallax */}
-      <motion.div className="absolute inset-0 mesh-gradient" style={{ y: backgroundY }} />
+    <section className="relative min-h-screen flex items-center pt-24 pb-12 sm:pt-20 lg:pt-0 lg:pb-0 overflow-hidden aurora-bg noise">
+      {/* Mesh gradient background */}
+      <div className="absolute inset-0 mesh-gradient" />
       
-      {/* Optimized aurora orbs using CSS animations */}
+      {/* Optimized aurora orbs using pure CSS */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
           className="absolute top-20 right-[10%] w-[300px] sm:w-[400px] lg:w-[500px] h-[300px] sm:h-[400px] lg:h-[500px] rounded-full blur-[80px] lg:blur-[100px] animate-aurora-orb-1"
-          style={{ 
-            background: 'radial-gradient(circle, hsl(204 80% 60% / 0.15) 0%, transparent 60%)',
-            willChange: 'transform',
-          }}
+          style={{ background: 'radial-gradient(circle, hsl(204 80% 60% / 0.15) 0%, transparent 60%)' }}
         />
         <div 
           className="absolute bottom-10 left-[5%] w-[250px] sm:w-[300px] lg:w-[400px] h-[250px] sm:h-[300px] lg:h-[400px] rounded-full blur-[60px] lg:blur-[80px] animate-aurora-orb-2"
-          style={{ 
-            background: 'radial-gradient(circle, hsl(280 70% 60% / 0.1) 0%, transparent 60%)',
-            willChange: 'transform',
-          }}
+          style={{ background: 'radial-gradient(circle, hsl(280 70% 60% / 0.1) 0%, transparent 60%)' }}
         />
       </div>
 
@@ -51,10 +34,9 @@ const Hero = () => {
           {/* Text content */}
           <motion.div 
             className="max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-            style={{ y: contentY, opacity }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
             {/* Badge */}
             <motion.div 
@@ -191,28 +173,19 @@ const Hero = () => {
               {/* Decorative rings with CSS animations */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div 
-                  className="w-72 h-72 rounded-full animate-spin-slow"
-                  style={{ 
-                    border: '1px solid hsl(204 80% 60% / 0.12)',
-                    willChange: 'transform',
-                  }}
+                  className="w-72 h-72 rounded-full animate-spin-slow border border-primary/10"
                 />
                 <div 
-                  className="absolute w-60 h-60 rounded-full animate-spin-reverse"
-                  style={{ 
-                    border: '1px solid hsl(280 70% 60% / 0.08)',
-                    willChange: 'transform',
-                  }}
+                  className="absolute w-60 h-60 rounded-full animate-spin-reverse border border-accent/10"
                 />
               </div>
 
               {/* Main mascot with enhanced glow */}
               <motion.div 
                 className="relative z-10 flex justify-center"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                style={{ y: mascotY }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <div className="relative">
                   <div 
