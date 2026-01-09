@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { memo, useMemo } from 'react';
 
 type InfiniteSliderProps = {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ type InfiniteSliderProps = {
   pauseOnHover?: boolean;
 };
 
-export function InfiniteSlider({
+export const InfiniteSlider = memo(function InfiniteSlider({
   children,
   gap = 16,
   duration = 25,
@@ -17,6 +18,11 @@ export function InfiniteSlider({
   className,
   pauseOnHover = true,
 }: InfiniteSliderProps) {
+  const style = useMemo(() => ({
+    gap: `${gap}px`,
+    animationDuration: `${duration}s`,
+  }), [gap, duration]);
+
   return (
     <div className={cn('overflow-hidden', className)}>
       <div
@@ -25,15 +31,11 @@ export function InfiniteSlider({
           reverse ? 'animate-scroll-reverse' : 'animate-scroll',
           pauseOnHover && 'hover:[animation-play-state:paused]'
         )}
-        style={{
-          gap: `${gap}px`,
-          animationDuration: `${duration}s`,
-          willChange: 'transform',
-        }}
+        style={style}
       >
         {children}
         {children}
       </div>
     </div>
   );
-}
+});

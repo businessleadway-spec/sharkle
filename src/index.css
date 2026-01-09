@@ -92,11 +92,26 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Optimize animations for GPU */
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-spin-slow,
+  .animate-spin-reverse,
+  .animate-scroll,
+  .animate-scroll-reverse {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   /* Custom scrollbar */
