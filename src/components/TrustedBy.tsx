@@ -30,11 +30,13 @@ const TrustedBy = () => {
               key={index}
               className="flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-500"
             >
-              <img
-                src={logo.src}
-                alt={logo.name}
-                className="h-10 sm:h-14 w-auto object-contain"
-              />
+            <img
+              src={logo.src}
+              alt={logo.name}
+              loading="lazy"
+              decoding="async"
+              className="h-10 sm:h-14 w-auto object-contain"
+            />
             </div>
           ))}
         </InfiniteSlider>
