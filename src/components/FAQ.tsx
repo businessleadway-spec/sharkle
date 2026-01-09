@@ -87,6 +87,8 @@ const FAQ = () => {
                 <img 
                   src={mascotSagaz} 
                   alt="Sharkle Mascot" 
+                  loading="lazy"
+                  decoding="async"
                   className="relative z-10 w-64 h-auto drop-shadow-2xl animate-float"
                 />
               </div>

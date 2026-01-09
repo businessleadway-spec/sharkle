@@ -37,6 +37,8 @@ const About = () => {
                 <img 
                   src={mascotHandshake} 
                   alt="Sharkle Partnership" 
+                  loading="lazy"
+                  decoding="async"
                   className="relative z-10 w-48 sm:w-64 lg:w-80 h-auto drop-shadow-2xl animate-float"
                 />
               </div>

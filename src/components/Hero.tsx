@@ -157,6 +157,8 @@ const Hero = () => {
               <img 
                 src={mascotJoia} 
                 alt="Sharkle Mascot" 
+                loading="eager"
+                decoding="async"
                 className="relative z-10 w-40 sm:w-52 h-auto animate-float drop-shadow-2xl"
               />
             </div>
@@ -197,6 +199,8 @@ const Hero = () => {
                   <img 
                     src={mascotJoia} 
                     alt="Sharkle Mascot" 
+                    loading="eager"
+                    decoding="async"
                     className="relative z-10 w-72 h-auto animate-float drop-shadow-2xl"
                   />
                 </div>
