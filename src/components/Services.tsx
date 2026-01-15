@@ -68,21 +68,15 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="servicos" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-background">
-      {/* Subtle background pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}
-      />
+    <section id="servicos" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-background noise">
+      {/* Soft mesh gradient */}
+      <div className="absolute inset-0 mesh-gradient opacity-30" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <ScrollReveal animation="fade-up">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/5 border border-primary/10 mb-4 sm:mb-6">
+            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 mb-4 sm:mb-6 shadow-sm">
               <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">Nossos Serviços</span>
             </div>
           </ScrollReveal>

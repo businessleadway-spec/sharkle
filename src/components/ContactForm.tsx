@@ -137,10 +137,11 @@ const ContactForm = () => {
   ];
 
   return (
-    <section id="contato" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-background">
+    <section id="contato" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden bg-background noise">
       {/* Background decoration */}
+      <div className="absolute inset-0 mesh-gradient opacity-30" />
       <div className="absolute top-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full blur-[100px] sm:blur-[150px] opacity-20"
-        style={{ background: 'radial-gradient(circle, hsl(204 37% 36% / 0.3) 0%, transparent 70%)' }}
+        style={{ background: 'radial-gradient(circle, hsl(200 50% 70% / 0.3) 0%, transparent 70%)' }}
       />
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -148,7 +149,7 @@ const ContactForm = () => {
           {/* Left side - Info */}
           <div>
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/5 border border-primary/10 mb-4 sm:mb-6">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 mb-4 sm:mb-6 shadow-sm">
                 <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">Contato</span>
               </div>
             </ScrollReveal>
