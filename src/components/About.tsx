@@ -11,10 +11,10 @@ const features = [
 
 const About = () => {
   return (
-    <section id="sobre" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
-      {/* Aurora background */}
-      <div className="absolute inset-0 aurora-bg opacity-50" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+    <section id="sobre" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden noise">
+      {/* Soft gradient background */}
+      <div className="absolute inset-0 gradient-section" />
+      <div className="absolute inset-0 mesh-gradient opacity-40" />
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -28,10 +28,10 @@ const About = () => {
                   <div className="absolute bottom-0 right-0 w-16 sm:w-24 h-16 sm:h-24 border-r-2 border-b-2 border-accent/30 rounded-br-2xl sm:rounded-br-3xl" />
                 </div>
                 
-                {/* Aurora glow effect */}
+                {/* Soft glow effect */}
                 <div 
-                  className="absolute inset-0 rounded-full blur-[60px] sm:blur-[80px] scale-125 opacity-40"
-                  style={{ background: 'radial-gradient(circle, hsl(204 80% 60% / 0.25) 0%, hsl(280 70% 60% / 0.15) 50%, transparent 70%)' }}
+                  className="absolute inset-0 rounded-full blur-[60px] sm:blur-[80px] scale-125 opacity-50"
+                  style={{ background: 'radial-gradient(circle, hsl(200 50% 85% / 0.4) 0%, hsl(205 40% 75% / 0.2) 50%, transparent 70%)' }}
                 />
                 
                 <img 
@@ -48,7 +48,7 @@ const About = () => {
           {/* Content */}
           <div className="order-1 lg:order-2">
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass border border-primary/20 mb-4 sm:mb-6 shadow-glow">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 mb-4 sm:mb-6 shadow-sm">
                 <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">Sobre nós</span>
               </div>
             </ScrollReveal>
@@ -73,7 +73,7 @@ const About = () => {
               {features.map((feature, index) => (
                 <StaggerItem key={index}>
                   <div 
-                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl glass border border-border/30 hover:border-primary/30 hover:shadow-glow transition-all duration-500 group"
+                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-500 group"
                   >
                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 shadow-primary group-hover:scale-110 transition-transform duration-300">
                       <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
@@ -93,7 +93,7 @@ const About = () => {
               ].map((stat, index) => (
                 <StaggerItem key={index}>
                   <div 
-                    className="text-center p-3 sm:p-6 rounded-xl sm:rounded-2xl glass border border-primary/10 hover:border-primary/30 hover:shadow-glow transition-all duration-500"
+                    className="text-center p-3 sm:p-6 rounded-xl sm:rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 hover:border-primary/30 hover:shadow-md transition-all duration-500"
                   >
                     <p className="text-xl sm:text-3xl lg:text-4xl font-display font-bold gradient-text">{stat.value}</p>
                     <p className="text-xs sm:text-sm text-muted-foreground mt-0.5 sm:mt-1 font-medium">{stat.label}</p>

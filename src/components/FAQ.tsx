@@ -33,16 +33,17 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+    <section id="faq" className="py-16 sm:py-20 lg:py-28 relative overflow-hidden noise">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
+      <div className="absolute inset-0 gradient-section" />
+      <div className="absolute inset-0 mesh-gradient opacity-30" />
       
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Content */}
           <div>
             <ScrollReveal animation="fade-up">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/5 border border-primary/10 mb-4 sm:mb-6">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 mb-4 sm:mb-6 shadow-sm">
                 <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                 <span className="text-xs sm:text-sm font-semibold text-primary uppercase tracking-wider">FAQ</span>
               </div>
@@ -81,8 +82,8 @@ const FAQ = () => {
             <ScrollReveal animation="zoom-in" delay={0.3}>
               <div className="relative">
                 <div 
-                  className="absolute inset-0 rounded-full blur-[80px] scale-125 opacity-40"
-                  style={{ background: 'radial-gradient(circle, hsl(189 60% 45% / 0.3) 0%, hsl(204 37% 36% / 0.2) 50%, transparent 70%)' }}
+                  className="absolute inset-0 rounded-full blur-[80px] scale-125 opacity-50"
+                  style={{ background: 'radial-gradient(circle, hsl(200 50% 85% / 0.4) 0%, hsl(205 45% 70% / 0.25) 50%, transparent 70%)' }}
                 />
                 <img 
                   src={mascotSagaz} 

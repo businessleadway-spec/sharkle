@@ -14,16 +14,15 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   };
 
   return (
-    <footer ref={ref} className="relative overflow-hidden bg-foreground">
-      {/* Aurora gradient overlay */}
+    <footer ref={ref} className="relative overflow-hidden bg-foreground noise">
+      {/* Gradient overlay */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-20"
           style={{
             background: `
-              radial-gradient(ellipse 80% 50% at 20% 100%, hsl(204 80% 60% / 0.3), transparent 50%),
-              radial-gradient(ellipse 60% 60% at 80% 100%, hsl(280 70% 60% / 0.2), transparent 50%),
-              radial-gradient(ellipse 50% 40% at 50% 80%, hsl(189 90% 50% / 0.2), transparent 50%)
+              radial-gradient(ellipse 70% 50% at 20% 100%, hsl(200 50% 50% / 0.3), transparent 50%),
+              radial-gradient(ellipse 50% 60% at 80% 100%, hsl(205 45% 45% / 0.25), transparent 50%)
             `
           }}
         />
@@ -76,7 +75,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                     href={link.href} 
                     className="text-white/60 hover:text-white transition-colors duration-300 flex items-center gap-2 group text-sm sm:text-base"
                   >
-                    <span className="w-0 h-px bg-gradient-to-r from-aurora-1 to-aurora-3 group-hover:w-4 transition-all duration-300" />
+                    <span className="w-0 h-px bg-gradient-to-r from-primary to-accent group-hover:w-4 transition-all duration-300" />
                     {link.name}
                   </a>
                 </li>
